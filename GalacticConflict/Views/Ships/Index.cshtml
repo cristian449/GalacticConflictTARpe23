@@ -1,5 +1,37 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model IEnumerable<InterGalacticConflict.Models.Ships.ShipIndexViewModel>
+
+@{    int rowNumber = 1;}
+<div><a asp action="Add" asp-controller="Ships" type="submit" class="btn btn-primary">Build new Ship</a></div> 
+@*User can build ship using ADD function, to obatin a new Ship. In Controller, this is called "CreateShip"*@
+
+<div calss="h1">Ship Count</div>
+<form method="post">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                @*Later, once images have been implemented, agg images here as well*@
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Class</th>
+                <th scope="col">Experience</th>
+            </tr>
+        </thead>>
+        <tbody>
+            @foreach (var ship in Model)
+            {
+                <tr>
+                    @*Later, once images have been implemented, agg images here as well*@
+                    <td>@rowNumber</td>
+                    <td>@ship.ShipName</td>
+                    <td>@ship.ShipClass</td>
+                    <td>@ship.ShipExperience</td>
+                    
+                </tr>
+                rowNumber++;
+            }
+        </tbody>
+    </table>
+</form>
+@*Missing Button for player profile*@
+@*Missing Button for Galaxy page*@
+@*Missing Button for Player activity*@

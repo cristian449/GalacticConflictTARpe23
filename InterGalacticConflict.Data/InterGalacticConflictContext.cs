@@ -8,8 +8,11 @@ using System.Threading.Tasks;
 
 namespace InterGalacticConflict.Data
 {
-    internal class IntergalacticConflictContext : DbContext
+    public class InterGalacticConflictContext : DbContext
     {
+        public InterGalacticConflictContext(DbContextOptions<InterGalacticConflictContext> options) : base(options) {}
+
         public DbSet<Ship> Ships { get; set; }
+
     }
 }

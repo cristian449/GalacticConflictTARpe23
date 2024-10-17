@@ -1,4 +1,10 @@
-﻿namespace InterGalacticConflict.Models.Ships
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace IntergalacticConflict.Core.Dto
 {
     public enum ShipClass
     {
@@ -9,7 +15,7 @@
     {
         Destroyed, Guarding, Damaged, Operational, Offline, Unshielded, Shielded, buffed
     }
-    public class ShipIndexViewModel
+    public class ShipDto
     {
         public Guid Id { get; set; }
         public string ShipName { get; set; }
@@ -32,6 +38,14 @@
         public DateTime ShipCreated { get; set; }
 
         public DateTime ShipDestroyed { get; set; }
+
+
+        //image
+        /*
+         public list<IFormFile> Files {get; set;}
+
+        public IEnumerale<FileToDatabaseDto> Image {get; set;} = new List<FiletoDatabaseDto>(); 
+         */
 
 
         //Database only

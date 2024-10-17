@@ -8,12 +8,12 @@ namespace IntergalacticConflict.Core.Domain
 {
     public enum ShipClass
     {
-        Frigate, Destroyer, Light_Cruiser, Heavy_Cruiser, Corvette, Capital, BattleCruiser, Super_Heavy_Battleship, Transport
+        Frigate, Destroyer, Light_Cruiser, Heavy_Cruiser, Corvette, Capital, BattleCruiser, Super_Heavy_Battleship, Transport, Experimental
     }
 
     public enum ShipStatus
     {
-        Destroyed, Guarding, Damaged, Active
+        Destroyed, Guarding, Damaged, Active, Unshielded, Shielded, buffed
     }
     public class Ship
     {
