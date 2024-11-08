@@ -1,12 +1,17 @@
+using IntergalacticConflict.Core.ServiceInterface;
 using InterGalacticConflict.Data;
 using Microsoft.EntityFrameworkCore;
+using InterGalacticConflict.ApplicationServices.Services;
+using InterGalacticConflict.ApplicationServices.GalacticTitans.ApplicationServices.Services;
 
 var builder = WebApplication.CreateBuilder(args);
     
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<InterGalacticConflictContext>(                                                                                               //Why!
+builder.Services.AddScoped<IShipServices, ShipServices>();
+builder.Services.AddScoped<IFileServices, FileServices>();
+builder.Services.AddDbContext<InterGalacticConflictContext>(                                                                                               
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))); 
 
 var app = builder.Build();

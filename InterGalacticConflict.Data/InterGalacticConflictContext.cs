@@ -1,10 +1,5 @@
 ﻿using IntergalacticConflict.Core.Domain;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace InterGalacticConflict.Data
 {
@@ -13,6 +8,8 @@ namespace InterGalacticConflict.Data
         public InterGalacticConflictContext(DbContextOptions<InterGalacticConflictContext> options) : base(options) {}
 
         public DbSet<Ship> Ships { get; set; }
+
+        public DbSet<FileToDatabase> FilesToDatabase { get; set; }
 
     }
 }

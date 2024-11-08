@@ -1,0 +1,69 @@
+﻿@model InterGalacticConflict.Models.Ships.ShipDetailsViewModel
+
+<h1>@Html.DisplayFor(model => model.ShipName)</h1>
+
+<div>
+    <h4>Your ship is ...</h4>
+    <hr/>
+    <dl class="row">
+        <div class="form-group row">
+            <label asp-for="Id" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.Id)
+        </div>
+        <div id="imagediv">
+        @foreach (var image in Model.Image)
+        {
+            <partial name="_Images" model="image"></partial>
+        }
+        </div>
+        <div class="form-group row">
+            <label asp-for="ShipName" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.ShipName)
+        </div>
+        <div class="form-group row">
+            <label asp-for="ShipHP" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.ShipHP)
+        </div>
+        <div class="form-group row">
+            <label asp-for="ShipExperience" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.ShipExperience)
+        </div>
+        @*ToDo: Make a progress bar for Experience*@
+        @*Display type with image instead*@
+        <div class="form-group row">
+            <label asp-for="ShipClass" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.ShipClass)
+        </div>
+        <div class="form-group row">
+            <label asp-for="ShipStatus" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.ShipStatus)
+        </div>
+        <div class="form-group row">
+            <label asp-for="Turbolaser" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.Turbolaser)
+        </div>
+        <div class="form-group row">
+            <label asp-for="Missile" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.Missile)
+        </div>
+        <div class="form-group row">
+            <label asp-for="Torpedo" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.Torpedo)
+        </div>
+        <div class="form-group row">
+            <label asp-for="Light_Laser" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.Light_Laser)
+        </div>
+        <div class="form-group row">
+            <label asp-for="Heavy_Laser" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.Heavy_Laser)
+        </div>
+        <div class="form-group row">
+            <label asp-for="Ballistic" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.Ballistic)
+        </div>
+
+    </dl>
+
+    <a asp-action="Index" asp-controller="Ships" class="btn btn-secondary">Index</a>
+</div>

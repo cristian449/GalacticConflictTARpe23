@@ -8,11 +8,9 @@ using System.Threading.Tasks;
 
 namespace IntergalacticConflict.Core.ServiceInterface
 {
-    public interface IShipServices
-    {
-        Task<Ship> DetailsAsync(Guid id);
 
-        Task<Ship> Create(ShipDto dto);
-        Task<Ship> Update(ShipDto dto);
-    }
+        public interface IFileServices
+        {
+            void UploadFilesToDatabase(ShipDto dto, Ship domain);
+        }
 }

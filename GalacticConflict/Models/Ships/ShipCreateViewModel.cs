@@ -1,31 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Microsoft.AspNetCore.Http;
-
-namespace IntergalacticConflict.Core.Dto
-
+﻿namespace InterGalacticConflict.Models.Ships
 {
-    public enum ShipClass
-    {
-        Frigate, Destroyer, Light_Cruiser, Heavy_Cruiser, Corvette, Capital, BattleCruiser, Super_Heavy_Battleship, Transport, Experimental
-    }
 
-    public enum ShipStatus
+    public class ShipCreateViewModel
     {
-        Destroyed, Guarding, Damaged, Operational, Offline, Unshielded, Shielded, buffed
-    }
-    public class ShipDto
-    {
-        public Guid Id { get; set; }
+        public Guid? Id { get; set; }
         public string ShipName { get; set; }
-        public ShipStatus ShipStatus { get; set; }
-        public ShipClass ShipClass { get; set; }
 
         public int ShipHP { get; set; }
+        public ShipStatus ShipStatus { get; set; }
+        public ShipClass ShipClass { get; set; }
         public int ShipExperience { get; set; }
         public int TurbolaserPower { get; set; }
         public int Turbolaser { get; set; }
@@ -45,14 +28,9 @@ namespace IntergalacticConflict.Core.Dto
         public DateTime ShipDestroyed { get; set; }
 
 
-        //image
-        
-         public List<IFormFile> Files {get; set;}
+        public List<IFormFile> Files { get; set; }
 
-        public IEnumerable<FileToDatabaseDto> Image {get; set;} = new List<FileToDatabaseDto>(); 
-         
-
-
+        public List<ShipImageViewModel> Image { get; set; } = new List<ShipImageViewModel>();
         //Database only
 
         public DateTime CreatedAt { get; set; }

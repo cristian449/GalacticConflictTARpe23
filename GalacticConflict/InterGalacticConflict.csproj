@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\InterGalacticConflict.ApplicationServices\InterGalacticConflict.ApplicationServices.csproj" />
     <ProjectReference Include="..\InterGalacticConflict.Data\InterGalacticConflict.Data.csproj" />
   </ItemGroup>
 

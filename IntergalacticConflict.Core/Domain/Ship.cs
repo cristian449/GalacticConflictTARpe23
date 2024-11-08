@@ -22,6 +22,8 @@ namespace IntergalacticConflict.Core.Domain
         
         public ShipStatus ShipStatus { get; set; }
         public ShipClass  ShipClass { get; set; }
+
+        public int ShipHP { get; set; }
         public int ShipExperience {  get; set; }
         public int TurbolaserPower { get; set; }
         public int Turbolaser { get; set; }
@@ -40,9 +42,9 @@ namespace IntergalacticConflict.Core.Domain
 
         //Database only
 
-        public DateTime ShipCreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
 
-        public DateTime ShipUpdatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
 
     }
 }

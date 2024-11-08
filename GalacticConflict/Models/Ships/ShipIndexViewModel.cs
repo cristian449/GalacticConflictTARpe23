@@ -13,6 +13,8 @@
     {
         public Guid Id { get; set; }
         public string ShipName { get; set; }
+
+        public int ShipHP { get; set; }
         public ShipStatus ShipStatus { get; set; }
         public ShipClass ShipClass { get; set; }
         public int ShipExperience { get; set; }

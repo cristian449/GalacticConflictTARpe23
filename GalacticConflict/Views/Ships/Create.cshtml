@@ -1,0 +1,136 @@
+﻿@model InterGalacticConflict.Models.Ships.ShipCreateViewModel
+
+<div>
+    <form method="post" asp-action="create" enctype="multipart/form-data">
+        @*@<input asp-for="CreatedAt" type="hidden"/>
+        <input asp-for="UpdatedAt" type="hidden" />
+        <input asp-for="ShipExperience" value="0" type="hidden" />
+        <input asp-for="ShipStatus" value="Operational" type="hidden" />
+        <input asp-for="ShipCreated" type="hidden" />
+        <input asp-for="ShipHP" type="hidden" /> *@
+
+
+
+
+
+        <div class="form-group-row">
+            <label asp-for="ShipName" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="ShipName" class="form-control"></input>
+            </div>
+        </div>
+        <div class="form-group-row">
+            <label asp-for="ShipClass" calss="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="ShipClass" calss="form-control"></input>
+            </div>
+        </div>
+        <div class="form-group-row">
+            <label asp-for="Turbolaser" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="Turbolaser" class="form-control"></input>
+            </div>
+        </div>
+        <div class="form-group-row">
+            <label asp-for="TurbolaserPower" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="TurbolaserPower" class="form-control"></input>
+            </div>
+        </div>
+        <div class="form-group-row">
+            <label asp-for="Missile" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="Missile" class="form-control"></input>
+            </div>
+        </div>
+        <div class="form-group-row">
+            <label asp-for="MissilePower" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="MissilePower" class="form-control"></input>
+            </div>
+        </div>
+        <div class="form-group-row">
+            <label asp-for="Torpedo" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="Torpedo" class="form-control"></input>
+            </div>
+        <div class="form-group-row">
+            <label asp-for="TorpedoPower" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="TorpedoPower" class="form-control"></input>
+            </div>
+        <div class="form-group-row">
+            <label asp-for="Light_Laser" class="col-sm-2 col-form-label"></label>
+             <div class="col-sm-10">
+                    <input asp-for="Light_Laser" class="form-control"></input>
+             </div>
+        <div class="form-group-row">
+                    <label asp-for="Light_LaserPower" class="col-sm-2 col-form-label"></label>
+             <div class="col-sm-10">
+                    <input asp-for="Light_LaserPower" class="form-control"></input>
+             </div>
+        <div/>
+        <div class="form-group-row">
+            <label asp-for="Heavy_Laser" class="col-sm-2 col-form-label"></label>
+             <div class="col-sm-10">
+                    <input asp-for="Heavy_Laser" class="form-control"></input>
+             </div>
+         </div>
+        <div class="form-group-row">
+            <label asp-for="Heavy_LaserPower" class="col-sm-2 col-form-label"></label>
+             <div class="col-sm-10">
+                     <input asp-for="Heavy_LaserPower" class="form-control"></input>
+             </div>
+         </div>
+        <div class="form-group-row">
+            <label asp-for="Ballistic" class="col-sm-2 col-form-label"></label>
+             <div class="col-sm-10">
+                     <input asp-for="Ballistic" class="form-control"></input>
+             </div>
+          </div>
+        <div class="form-group-row">
+            <label asp-for="BallisticPower" class="col-sm-2 col-form-label"></label>
+             <div class="col-sm-10">
+                     <input asp-for="BallisticPower" class="form-control"></input>
+             </div>
+          </div>
+
+        <div class="form-group-row">
+            <label asp-for="Files" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-5">
+                <div class="custom-file">
+                    <input 
+                        class="form-control custom-file-input"
+                        asp-for="Files"
+                        multiple type="file"
+                    />
+                    <label class="cusotm-file-label">Choose images</label>
+                </div>
+
+            </div>
+        </div>
+
+        <input asp-action="create" asp-controller="Ships" type="submit"
+        class="btn btn-primary" value="Build this ship"/>
+        <a asp-action="Index" class="btn btn-primary">Cancer</a>
+
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('.custom-file-input').on("Change", function () {
+                var fileLabel = $(this).next('.custom-file-input');
+                var files = $(this)[0].files;
+                if (files.length > 1) {
+                    fileLabel.html(files.length + 'files selected');
+                }
+                else if (files.length == 1) {
+                    fileLabel.html(files[0].name);
+                }
+            });
+        });
+    </script>
+
+}
