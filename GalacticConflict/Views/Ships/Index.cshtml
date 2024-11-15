@@ -24,6 +24,13 @@
         <tbody>
             @foreach (var ship in Model)
             {
+
+
+
+
+
+
+
                 <tr>
                     @*Later, once images have been implemented, agg images here as well*@
                     <td>@rowNumber</td>
@@ -33,9 +40,9 @@
                     <td>
                         <a asp-action="details" asp-controller="Ships" asp-route-id="@ship.Id" class="btn btn-info">Ship Details</a>
                         <br />
-                        <a asp-action="update" asp-controller="titans" asp-route-id="@ship.Id" class="btn btn-info">TitanConfigure</a>
+                        <a asp-action="update" asp-controller="Ships" asp-route-id="@ship.Id" class="btn btn-info">ShipConfigure</a>
                         <br />
-                        <a asp-action="delete" asp-controller="titans" asp-route-id="@ship.Id" class="btn btn-info">TitanDelete</a>
+                        <a asp-action="delete" asp-controller="Ships" asp-route-id="@ship.Id" class="btn btn-info">Delete Ship</a>
                     </td>
 
                 </tr>

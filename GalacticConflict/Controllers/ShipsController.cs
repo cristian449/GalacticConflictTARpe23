@@ -257,8 +257,6 @@ namespace InterGalacticConflict.Controllers
             vm.Light_Laser = ship.Light_Laser;
             vm.Heavy_Laser = ship.Heavy_Laser;
             vm.Ballistic = ship.Ballistic;
-            vm.ShipDestroyed = ship.ShipDestroyed;
-            vm.ShipCreated = ship.ShipCreated;
             vm.CreatedAt = ship.CreatedAt;
             vm.UpdatedAt = DateTime.Now;
             vm.Image.AddRange(images);
@@ -275,11 +273,11 @@ namespace InterGalacticConflict.Controllers
             return RedirectToAction("Index");
         }
         [HttpPost]
-        public async Task<IActionResult> RemoveImage(ShipImageViewModel vm)
+        public async Task<IActionResult> RemoveImage(Guid id)
         {
             var dto = new FileToDatabaseDto()
             {
-                ID = vm.ImageID
+                ID = id
             };
             var image = await _fileServices.RemoveImageFromDatabase(dto);
             if (image == null) { return RedirectToAction("Index"); }

@@ -22,9 +22,6 @@
         public int BallisticPower { get; set; }
         public int Ballistic { get; set; }
 
-        public DateTime ShipCreated { get; set; }
-
-        public DateTime ShipDestroyed { get; set; }
 
         //public List<IFormFile> Files { get; set; }
 
