@@ -14,5 +14,7 @@ namespace IntergalacticConflict.Core.ServiceInterface
 
         Task<Ship> Create(ShipDto dto);
         Task<Ship> Update(ShipDto dto);
+
+        Task<Ship> Delete(Guid id);
     }
 }

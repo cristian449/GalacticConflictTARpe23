@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using static System.Net.Mime.MediaTypeNames;
 using System.Reflection;
+using InterGalacticConflict.ApplicationServices.GalacticTitans.ApplicationServices.Services;
 
 namespace InterGalacticConflict.Controllers
 {
@@ -21,11 +22,13 @@ namespace InterGalacticConflict.Controllers
          */
         private readonly InterGalacticConflictContext _context;
         private readonly IShipServices _ShipServices;
+        private readonly IFileServices _fileServices;
 
-        public ShipsController(InterGalacticConflictContext context, IShipServices ShipServices)
+        public ShipsController(InterGalacticConflictContext context, IShipServices ShipServices, IFileServices fileServices)
         {
             _context = context;
             _ShipServices = ShipServices;
+            _fileServices = fileServices;
         }
 
         [HttpGet]
@@ -218,6 +221,70 @@ namespace InterGalacticConflict.Controllers
             if (result == null) { return RedirectToAction("Index");  }
             return RedirectToAction("Index", vm);
         }
-        
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            
+            if (id == null) { return NotFound(); }
+            
+            var ship = await _ShipServices.DetailsAsync(id);
+           
+            if (ship == null) { return NotFound(); };
+            
+            var images = await _context.FilesToDatabase
+                .Where(x => x.ShipID == id)
+                .Select(y => new ShipImageViewModel
+                {
+                    ShipID = y.ID,
+                    ImageID = y.ID,
+                    ImageData = y.ImageData,
+                    ImageTitle = y.ImageTitle,
+                    Image = string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(y.ImageData))
+                }).ToArrayAsync();
+            var vm = new ShipDeleteViewModel();
+
+            // TBC
+            vm.Id = ship.Id;
+            vm.ShipName = ship.ShipName;
+            vm.ShipClass = (Models.Ships.ShipClass)ship.ShipClass;
+            vm.ShipHP = ship.ShipHP;
+            vm.ShipStatus = (Models.Ships.ShipStatus)ship.ShipStatus;
+            vm.ShipExperience = ship.ShipExperience;
+            vm.Turbolaser = ship.Turbolaser;
+            vm.Missile = ship.Missile;
+            vm.Torpedo = ship.Torpedo;
+            vm.Light_Laser = ship.Light_Laser;
+            vm.Heavy_Laser = ship.Heavy_Laser;
+            vm.Ballistic = ship.Ballistic;
+            vm.ShipDestroyed = ship.ShipDestroyed;
+            vm.ShipCreated = ship.ShipCreated;
+            vm.CreatedAt = ship.CreatedAt;
+            vm.UpdatedAt = DateTime.Now;
+            vm.Image.AddRange(images);
+
+
+
+            return View(vm);
+        }
+        [HttpPost]
+        public async Task<IActionResult> DeleteConfirmation(Guid id)
+        {
+            var titanToDelete = await _ShipServices.Delete(id);
+            if (titanToDelete == null) { return RedirectToAction("Index"); }
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public async Task<IActionResult> RemoveImage(ShipImageViewModel vm)
+        {
+            var dto = new FileToDatabaseDto()
+            {
+                ID = vm.ImageID
+            };
+            var image = await _fileServices.RemoveImageFromDatabase(dto);
+            if (image == null) { return RedirectToAction("Index"); }
+            return RedirectToAction("Index");
+        }
+
     }
 }

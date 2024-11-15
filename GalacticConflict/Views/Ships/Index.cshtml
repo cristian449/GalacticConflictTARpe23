@@ -32,6 +32,10 @@
                     <td>@ship.ShipExperience</td>
                     <td>
                         <a asp-action="details" asp-controller="Ships" asp-route-id="@ship.Id" class="btn btn-info">Ship Details</a>
+                        <br />
+                        <a asp-action="update" asp-controller="titans" asp-route-id="@ship.Id" class="btn btn-info">TitanConfigure</a>
+                        <br />
+                        <a asp-action="delete" asp-controller="titans" asp-route-id="@ship.Id" class="btn btn-info">TitanDelete</a>
                     </td>
 
                 </tr>

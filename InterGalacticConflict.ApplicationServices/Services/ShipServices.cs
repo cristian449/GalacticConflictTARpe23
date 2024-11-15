@@ -89,7 +89,7 @@ namespace InterGalacticConflict.ApplicationServices.Services
             ship.ShipHP = dto.ShipHP;
             //Add shield later!!!
             ship.ShipExperience = dto.ShipExperience;
-            ship.ShipStatus = (IntergalacticConflict.Core.Domain.ShipStatus)dto.ShipStatus
+            ship.ShipStatus = (IntergalacticConflict.Core.Domain.ShipStatus)dto.ShipStatus;
             ship.ShipCreated = dto.ShipCreated;
             ship.ShipDestroyed = dto.ShipDestroyed;
 
@@ -127,6 +127,15 @@ namespace InterGalacticConflict.ApplicationServices.Services
 
             return ship;
 
+        }
+
+        public async Task<Ship> Delete(Guid id)
+        {
+            var result = await _context.Ships
+                .FirstOrDefaultAsync(x => x.Id == id);
+            _context.Ships.Remove(result);
+            await _context.SaveChangesAsync();
+            return result;
         }
 
     }
