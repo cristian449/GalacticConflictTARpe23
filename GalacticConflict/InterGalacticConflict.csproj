@@ -26,8 +26,4 @@
     <ProjectReference Include="..\InterGalacticConflict.Data\InterGalacticConflict.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Planets\" />
-  </ItemGroup>
-
 </Project>

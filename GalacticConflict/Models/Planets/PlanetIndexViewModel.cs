@@ -3,7 +3,7 @@
 
     public enum PlanetType
     {
-        Frost, Volcanic, Gas_giant, Forest, Jungle, Ocean, Dead
+        Frost, Volcanic, Gas_giant, Forest, Jungle, Ocean, Dead, Wasteland
     }
 
     public enum PlanetStatus
@@ -27,6 +27,8 @@
         public PlanetType PlanetType { get; set; }
 
         public PlanetResouces PlanetResouces { get; set; }
+
+        public int PlanetPopulation { get; set; }
 
         
     }
