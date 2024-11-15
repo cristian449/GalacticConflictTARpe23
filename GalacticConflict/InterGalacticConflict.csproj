@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -24,6 +24,10 @@
   <ItemGroup>
     <ProjectReference Include="..\InterGalacticConflict.ApplicationServices\InterGalacticConflict.ApplicationServices.csproj" />
     <ProjectReference Include="..\InterGalacticConflict.Data\InterGalacticConflict.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Planets\" />
   </ItemGroup>
 
 </Project>

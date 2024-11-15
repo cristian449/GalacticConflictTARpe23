@@ -129,11 +129,17 @@ namespace InterGalacticConflict.Controllers
             vm.ShipStatus = (Models.Ships.ShipStatus)ship.ShipStatus;
             vm.ShipExperience = ship.ShipExperience;
             vm.Turbolaser = ship.Turbolaser;
+            vm.TurbolaserPower = ship.TurbolaserPower;
             vm.Missile = ship.Missile;
+            vm.MissilePower = ship.MissilePower;
             vm.Torpedo = ship.Torpedo;
+            vm.TorpedoPower = ship.TorpedoPower;
             vm.Light_Laser = ship.Light_Laser;
+            vm.Light_LaserPower = ship.Light_LaserPower;
             vm.Heavy_Laser = ship.Heavy_Laser;
+            vm.Heavy_LaserPower = ship.Heavy_LaserPower;
             vm.Ballistic = ship.Ballistic;
+            vm.BallisticPower = ship.BallisticPower;
             vm.Image.AddRange(images);
 
             return View(vm);
@@ -167,11 +173,17 @@ namespace InterGalacticConflict.Controllers
                 vm.ShipStatus = (Models.Ships.ShipStatus)ship.ShipStatus;
                 vm.ShipExperience = ship.ShipExperience;
                 vm.Turbolaser = ship.Turbolaser;
+                vm.TurbolaserPower = ship.TurbolaserPower;
                 vm.Missile = ship.Missile;
+                vm.MissilePower = ship.MissilePower;
                 vm.Torpedo = ship.Torpedo;
+                vm.TorpedoPower = ship.TorpedoPower;
                 vm.Light_Laser = ship.Light_Laser;
+                vm.Light_LaserPower = ship.Light_LaserPower;
                 vm.Heavy_Laser = ship.Heavy_Laser;
+                vm.Heavy_LaserPower = ship.Heavy_LaserPower;
                 vm.Ballistic = ship.Ballistic;
+                vm.BallisticPower = ship.BallisticPower;
                 vm.ShipDestroyed = ship.ShipDestroyed;
                 vm.ShipCreated = ship.ShipCreated;
                 vm.CreatedAt = ship.CreatedAt;
