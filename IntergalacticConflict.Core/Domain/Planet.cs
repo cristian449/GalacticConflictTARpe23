@@ -6,30 +6,30 @@ using System.Threading.Tasks;
 
 namespace IntergalacticConflict.Core.Domain
 {
+    public enum PlanetType
+    {
+        Ecumenopolis, Ice_wasteland, Terraformed, Desert, Volcanic, Jungle, Plains, Crystalized, Wasteland, Ocean, Star, Nebula, Blackhole, Nebula_Cluster, lifeless
+    }
+
+    public enum PlanetStatus
+    {
+        Occupied, Free, Destroyed, Unhinabited, Garrisoned, Pirates, Warlord
+    }
+
+    public enum SpaceStationType
+    {
+        Manafacturing_Factory, Economic, Civillian, Military, ShipYard, None, Goliath //Goliath is a station that has very good 
+                                                                                      //Defense however also has large upcost
+    }
+
+    public enum DefenseType
+    {
+        Heavy, Light, Very_light, Medium
+    }
+
     public class Planet
     {
-        public enum PlanetType
-        {
-            Ecumenopolis, Ice_wasteland, Terraformed, Desert, Volcanic, Jungle, Plains, Crystalized, Wasteland, Ocean, Star, Nebula, Blackhole, Nebula_Cluster, lifeless, hostile_fauna
-        }
 
-        public enum PlanetStatus
-        {
-            Occupied, Free, Destroyed, Unhinabited, Garrisoned, Pirates, Warlord
-        }
-
-        public enum SpaceStationType
-        {
-            Manafacturing_Factory, Economic, Civillian, Military, ShipYard, None, Goliath //Goliath is a station that has very good 
-                                                                                          //Defense however also has large upcost
-        }
-
-        public enum DefenseType
-        {
-            Heavy, Light, Very_light, Medium
-        }
-        public class Ship
-        {
             public Guid Id { get; set; }
             public string PlanetName { get; set; }
 
@@ -58,7 +58,15 @@ namespace IntergalacticConflict.Core.Domain
             public DefenseType DefenseType { get; set; } //A Station can only have one Defense type
 
             public int DefensePower { get; set; } //Will add limit to defense power later probably
-            
+
+
+            //Database only!
+            public DateTime CreatedAt { get; set; }
+            public DateTime ModifiedAt { get; set; }
         }
+
     }
-}
+
+    
+
+
