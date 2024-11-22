@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace IntergalacticConflict.Core.Domain
 {
-    internal class ApplicationUser
+    public class ApplicationUser
     {
+        public string City { get; set; }
     }
 }
