@@ -9,6 +9,8 @@ namespace InterGalacticConflict.Data
 
         public DbSet<Ship> Ships { get; set; }
 
+        public DbSet<Planet> Planets { get; set; }
+
         public DbSet<FileToDatabase> FilesToDatabase { get; set; }
 
     }
