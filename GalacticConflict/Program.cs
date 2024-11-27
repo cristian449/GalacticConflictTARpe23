@@ -10,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IShipServices, ShipServices>();
+builder.Services.AddScoped<IPlanetsServices, PlanetServices>();
 builder.Services.AddScoped<IFileServices, FileServices>();
 builder.Services.AddDbContext<InterGalacticConflictContext>(                                                                                               
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))); 
