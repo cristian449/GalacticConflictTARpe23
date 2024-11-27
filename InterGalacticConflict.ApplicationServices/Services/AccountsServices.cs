@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace InterGalacticConflict.ApplicationServices.Services
 {
-    public class AccountsServices
+    public class AccountsServices : IAccountServices
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
