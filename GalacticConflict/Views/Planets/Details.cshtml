@@ -1,0 +1,52 @@
+﻿@model InterGalacticConflict.Models.Planets.PlanetDetailsViewModel
+
+<h1>@Html.DisplayFor(model => model.PlanetName)</h1>
+
+<div>
+    <h4>Your Planet is ...</h4>
+    <hr />
+    <dl class="row">
+        <div class="form-group row">
+            <label asp-for="ID" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.ID)
+        </div>
+        <div id="imagediv">
+            @foreach (var image in Model.Image)
+            {
+                <partial name="_Images" model="image"></partial>
+            }
+        </div>
+        <div class="form-group row">
+            <label asp-for="PlanetName" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.PlanetName)
+        </div>
+        <div class="form-group row">
+            <label asp-for="PlanetType" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.PlanetType)
+        </div>
+        <div class="form-group row">
+            <label asp-for="PlanetPopulation" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.PlanetPopulation)
+        </div>
+        @*ToDo: Make a progress bar for Experience*@
+        @*Display type with image instead*@
+        <div class="form-group row">
+            <label asp-for="CapitalCity" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.CapitalCity)
+        </div>
+        <div class="form-group row">
+            <label asp-for="Major_cities" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.Major_cities)
+        </div>
+        <div class="form-group row">
+            <label asp-for="SpaceStation" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.SpaceStation)
+        </div>
+        <div class="form-group row">
+            <label asp-for="SpaceStationType" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.SpaceStationType)
+
+    </dl>
+
+    <a asp-action="Index" asp-controller="Planets" class="btn btn-secondary">Index</a>
+</div>

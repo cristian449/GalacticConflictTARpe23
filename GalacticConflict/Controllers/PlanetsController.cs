@@ -1,5 +1,6 @@
 ﻿using IntergalacticConflict.Core.Dto;
 using IntergalacticConflict.Core.ServiceInterface;
+using InterGalacticConflict.ApplicationServices.Services;
 using InterGalacticConflict.Data;
 using InterGalacticConflict.Models.Planets;
 using InterGalacticConflict.Models.Ships;
@@ -98,6 +99,43 @@ namespace InterGalacticConflict.Controllers
             }
             
             return RedirectToAction("Index", vm);
+        }
+
+        public async Task<IActionResult> Details(Guid Id /*, Guid ref*/)
+        {
+            var planet = await _planetsServices.DetailsAsync(Id);
+
+            if (planet == null)
+            {
+                return NotFound();
+            }
+
+            var images = await _context.FilesToDatabase
+                .Where(s => s.PlanetID == Id)
+                .Select(y => new PlanetImageViewModel
+                {
+                    PlanetID = y.ID,
+                    ImageID = y.ID,
+                    ImageData = y.ImageData,
+                    ImageTitle = y.ImageTitle,
+                    Image = string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(y.ImageData))
+                }).ToArrayAsync();
+
+
+            var vm = new PlanetDetailsViewModel();
+
+            vm.ID = planet.ID;
+            vm.PlanetName = planet.PlanetName;
+            vm.PlanetType = planet.PlanetType;
+            vm.PlanetPopulation = planet.PlanetPopulation;
+            vm.CapitalCity = planet.CapitalCity;
+            vm.Major_cities = planet.Major_cities;
+            vm.SpaceStation = planet.SpaceStation;
+            vm.SpaceStationType = planet.SpaceStationType;
+            vm.Image.AddRange(images);
+
+            return View(vm);
+
         }
     }
 }

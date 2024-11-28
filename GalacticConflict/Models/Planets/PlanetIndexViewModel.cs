@@ -27,7 +27,6 @@ namespace InterGalacticConflict.Models.Planets
         public string? SpaceStation { get; set; } 
         // Might try adding  "public int SpaceStations { get; set; } To add multiple space stations to one planet
 
-        public SpaceStationType SpaceStationType { get; set; }
 
         //Database only!
         public DateTime CreatedAt { get; set; }
