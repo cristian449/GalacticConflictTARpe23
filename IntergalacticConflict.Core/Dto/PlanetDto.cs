@@ -15,22 +15,22 @@ namespace IntergalacticConflict.Core.Dto
 
         public PlanetType PlanetType { get; set; }
 
-        public PlanetStatus PlanetStatus { get; set; }
+        public PlanetStatus? PlanetStatus { get; set; }
 
         public int PlanetPopulation { get; set; }
 
-        public string Planetinfo { get; set; }
+        public string? Planetinfo { get; set; }
         public Guid? GalaxyID { get; set; }
         public int Major_cities { get; set; }
 
-        public string CapitalCity { get; set; }
+        public string? CapitalCity { get; set; }
 
-        public int AmountOfShipsonPlanet { get; set; }
+        public int? AmountOfShipsonPlanet { get; set; }
 
-        public string SpaceStation { get; set; }
+        public string? SpaceStation { get; set; }
         // Might try adding  "public int SpaceStations { get; set; } To add multiple space stations to one planet
 
-        public SpaceStationType SpaceStationType { get; set; }
+        public SpaceStationType? SpaceStationType { get; set; }
 
 
         //IGMAE YAY

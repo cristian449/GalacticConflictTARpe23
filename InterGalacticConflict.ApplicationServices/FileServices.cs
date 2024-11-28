@@ -44,8 +44,8 @@
             }
 
 
-            public void UploadFilesToDatbase(ShipDto dto, Ship domain)
-        {
+            public void UploadFilesToDatabase(PlanetDto dto, Planet domain)
+            {
             if (dto.Files != null && dto.Files.Count > 0)
             {
                 foreach (var image in dto.Files)
@@ -80,10 +80,7 @@
                 return null;
             }
 
-        public void UploadFilesToDatabase(PlanetDto dto, Planet domain)
-        {
-            throw new NotImplementedException();
-        }
+
     }
-    }
+}
 

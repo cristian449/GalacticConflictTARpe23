@@ -4,6 +4,7 @@ using InterGalacticConflict.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InterGalacticConflict.Data.Migrations
 {
     [DbContext(typeof(InterGalacticConflictContext))]
-    partial class InterGalacticConflictContextModelSnapshot : ModelSnapshot
+    [Migration("20241128105737_2131")]
+    partial class _2131
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -57,15 +60,16 @@ namespace InterGalacticConflict.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("CapitalCity")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("DefensePower")
+                    b.Property<int>("DefensePower")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DefenseType")
+                    b.Property<int>("DefenseType")
                         .HasColumnType("int");
 
                     b.Property<Guid?>("GalaxyID")
@@ -84,19 +88,21 @@ namespace InterGalacticConflict.Data.Migrations
                     b.Property<int>("PlanetPopulation")
                         .HasColumnType("int");
 
-                    b.Property<int?>("PlanetStatus")
+                    b.Property<int>("PlanetStatus")
                         .HasColumnType("int");
 
                     b.Property<int>("PlanetType")
                         .HasColumnType("int");
 
                     b.Property<string>("Planetinfo")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SpaceStation")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("SpaceStationType")
+                    b.Property<int>("SpaceStationType")
                         .HasColumnType("int");
 
                     b.HasKey("Id");

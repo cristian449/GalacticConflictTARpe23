@@ -35,29 +35,28 @@ namespace InterGalacticConflict.ApplicationServices.Services
 
         public async Task<Planet> Create(PlanetDto Dto)
         {
-            Planet planet = new();
+            Planet newplanet = new();
 
-            planet.Id = Guid.NewGuid();
-            planet.PlanetName = Dto.PlanetName;
-            planet.PlanetPopulation = Dto.PlanetPopulation;
-            planet.PlanetStatus = Dto.PlanetStatus;
-            planet.CapitalCity = Dto.CapitalCity;
-            planet.Major_cities = Dto.Major_cities;
-            planet.PlanetType = Dto.PlanetType;
-            planet.Planetinfo = Dto.Planetinfo;
+            newplanet.Id = Guid.NewGuid();
+            newplanet.PlanetName = Dto.PlanetName;
+            newplanet.PlanetPopulation = Dto.PlanetPopulation;
+            newplanet.PlanetStatus = Dto.PlanetStatus;
+            newplanet.CapitalCity = Dto.CapitalCity;
+            newplanet.Major_cities = Dto.Major_cities;
+            newplanet.PlanetType = Dto.PlanetType;
 
 
-            planet.CreatedAt = DateTime.Now;
-            planet.ModifiedAt = DateTime.Now;
+            newplanet.CreatedAt = DateTime.Now;
+            newplanet.ModifiedAt = DateTime.Now;
 
             //files
             if(Dto.Files !=  null)
             {
-                _fileServices.UploadFilesToDatabase(Dto, planet);
+                _fileServices.UploadFilesToDatabase(Dto, newplanet);
             }
 
            
-            return planet;
+            return newplanet;
 
 
 

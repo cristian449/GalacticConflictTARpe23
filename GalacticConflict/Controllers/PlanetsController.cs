@@ -33,14 +33,14 @@ namespace InterGalacticConflict.Controllers
                 Id = x.Id,
                 PlanetName = x.PlanetName,
                 PlanetType = x.PlanetType,
-                PlanetStatus = x.PlanetStatus,
+                PlanetStatus = (IntergalacticConflict.Core.Domain.PlanetStatus)x.PlanetStatus,
                 PlanetPopulation = x.PlanetPopulation,
                 GalaxyID = (Guid)x.GalaxyID,
                 Major_cities = x.Major_cities,
                 CapitalCity = x.CapitalCity,
                 AmountOfShipsonPlanet = (int)x.AmountOfShipsonPlanet,
                 SpaceStation = x.SpaceStation,
-                SpaceStationType = x.SpaceStationType,
+                SpaceStationType = (IntergalacticConflict.Core.Domain.SpaceStationType)x.SpaceStationType,
 
             });
 
@@ -57,7 +57,7 @@ namespace InterGalacticConflict.Controllers
 
         }
 
-        [HttpPost]
+        [HttpPost, ActionName("Create")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create (PlanetCreateViewModel vm)
         {
@@ -89,8 +89,8 @@ namespace InterGalacticConflict.Controllers
                 
                }).ToArray()
             };
-            var newerplanet = await _planetsServices.Create(dto);
-            if (newerplanet == null) 
+            var newplanet = await _planetsServices.Create(dto);
+            if (newplanet == null) 
             {
                 return RedirectToAction("Index");
             }

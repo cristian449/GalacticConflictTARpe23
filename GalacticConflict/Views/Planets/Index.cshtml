@@ -3,14 +3,13 @@
 @{
     int rowNumber = 1;
 }
-<div><a asp-action="Create" asp-controller="Planets" class="btn btn-primary">CONQUER NEW PLANET TO ADD TO THE EMPIRE</a></div>
+<div><a asp-action="create" asp-controller="Planets" class="btn btn-primary">CONQUER NEW PLANET TO ADD TO THE EMPIRE</a></div>
 
-<div class="h1">Plane Count</div>
+<div class="h1">Planet Count</div>
 <form method="post">
     <table class="table table-hover">
         <thead>
             <tr>
-                @*Later, once images have been implemented, agg images here as well*@
                 
                 <th scope="col">Id</th>
                 <th scope="col">Name</th>
@@ -41,11 +40,6 @@
                     <td>@planet.CapitalCity</td>
                     <td>@planet.GalaxyID</td>
                     <td>@planet.SpaceStation</td>
-                    <td>
-                        <a asp-action="details" asp-controller="Ships" asp-route-id="@planet.Id" class="btn btn-info">Ship Details</a>
-                        <br />
-                    </td>
-
                 </tr>
                 rowNumber++;
             }
