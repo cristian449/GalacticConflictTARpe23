@@ -1,6 +1,7 @@
 ﻿using IntergalacticConflict.Core.Domain;
 using IntergalacticConflict.Core.Dto;
 using IntergalacticConflict.Core.ServiceInterface;
+using System.Diagnostics.Eventing.Reader;
 using InterGalacticConflict.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -34,29 +35,29 @@ namespace InterGalacticConflict.ApplicationServices.Services
 
         public async Task<Planet> Create(PlanetDto Dto)
         {
-            Planet newPlanet = new();
+            Planet planet = new();
 
-            newPlanet.Id = Guid.NewGuid();
-            newPlanet.PlanetName = Dto.PlanetName;
-            newPlanet.PlanetPopulation = Dto.PlanetPopulation;
-            newPlanet.PlanetStatus = Dto.PlanetStatus;
-            newPlanet.CapitalCity = Dto.CapitalCity;
-            newPlanet.Major_cities = Dto.Major_cities;
-            newPlanet.PlanetType = Dto.PlanetType;
-            newPlanet.Planetinfo = Dto.Planetinfo;
+            planet.Id = Guid.NewGuid();
+            planet.PlanetName = Dto.PlanetName;
+            planet.PlanetPopulation = Dto.PlanetPopulation;
+            planet.PlanetStatus = Dto.PlanetStatus;
+            planet.CapitalCity = Dto.CapitalCity;
+            planet.Major_cities = Dto.Major_cities;
+            planet.PlanetType = Dto.PlanetType;
+            planet.Planetinfo = Dto.Planetinfo;
 
 
-            newPlanet.CreatedAt = DateTime.Now;
-            newPlanet.ModifiedAt = DateTime.Now;
+            planet.CreatedAt = DateTime.Now;
+            planet.ModifiedAt = DateTime.Now;
 
-            if (dto.files != null)
+            //files
+            if(Dto.Files !=  null)
             {
-                _fileServices.UploadFilesToDatabase(dto, newPlanet);
+                _fileServices.UploadFilesToDatabase(Dto, planet);
             }
 
-            await _context.Planets.AddAsync(newPlanet);
-            await _context.SaveChangesAsync();
-            return newPlanet;
+           
+            return planet;
 
 
 

@@ -6,10 +6,10 @@
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Hosting;
 
-    namespace InterGalacticConflict.ApplicationServices
+    namespace InterGalacticConflict.ApplicationServices.FileServices
     {
-        public class FileServices
-        {
+    public class FileServices : IFileServices
+    {
             private readonly IHostEnvironment _webHost;
             private readonly InterGalacticConflictContext _context;
             public FileServices
@@ -43,6 +43,29 @@
                 }
             }
 
+
+            public void UploadFilesToDatbase(ShipDto dto, Ship domain)
+        {
+            if (dto.Files != null && dto.Files.Count > 0)
+            {
+                foreach (var image in dto.Files)
+                {
+                    using (var target = new MemoryStream())
+                    {
+                        FileToDatabase files = new FileToDatabase()
+                        {
+                            ID = Guid.NewGuid(),
+                            ImageTitle = image.FileName,
+                            PlanetID = domain.Id
+                        };
+                        image.CopyTo(target);
+                        files.ImageData = target.ToArray();
+                        _context.FilesToDatabase.Add(files);
+                    }
+                }
+            }
+        }
+
             public async Task<FileToDatabase> RemoveImageFromDatabase(FileToDatabaseDto dto)
             {
                 var imageID = await _context.FilesToDatabase
@@ -57,30 +80,10 @@
                 return null;
             }
 
-
-            public void UploadFilesToDatabase(Planet dto, Planet domain)
-            {
-                if (dto.Files != null && dto.Files.Count > 0)
-                {
-                    foreach (var image in dto.Files)
-                    {
-                        using (var target = new MemoryStream())
-                        {
-                            FileToDatabase files = new FileToDatabase()
-                            {
-                                ID = Guid.NewGuid(),
-                                ImageTitle = image.FileName,
-                                PlanetID = domain.Id
-                            };
-                            image.CopyTo(target);
-                            files.ImageData = target.ToArray();
-                            _context.FilesToDatabase.Add(files);
-                        }
-                    }
-                }
-            }
-
-
+        public void UploadFilesToDatabase(PlanetDto dto, Planet domain)
+        {
+            throw new NotImplementedException();
         }
+    }
     }
 
