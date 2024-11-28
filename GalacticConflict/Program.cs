@@ -2,7 +2,7 @@ using IntergalacticConflict.Core.ServiceInterface;
 using InterGalacticConflict.Data;
 using Microsoft.EntityFrameworkCore;
 using InterGalacticConflict.ApplicationServices.Services;
-using InterGalacticConflict.ApplicationServices.GalacticTitans.ApplicationServices.Services;
+using InterGalacticConflict.ApplicationServices.FileServices;
 
 var builder = WebApplication.CreateBuilder(args);
     
