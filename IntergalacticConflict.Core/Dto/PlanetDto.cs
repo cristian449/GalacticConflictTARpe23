@@ -19,6 +19,7 @@ namespace IntergalacticConflict.Core.Dto
 
         public int PlanetPopulation { get; set; }
 
+        public string Planetinfo { get; set; }
         public Guid? GalaxyID { get; set; }
         public int Major_cities { get; set; }
 
