@@ -10,7 +10,6 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using static System.Net.Mime.MediaTypeNames;
 using System.Reflection;
-using InterGalacticConflict.ApplicationServices.GalacticTitans.ApplicationServices.Services;
 
 namespace InterGalacticConflict.Controllers
 {

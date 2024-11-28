@@ -88,8 +88,8 @@ namespace InterGalacticConflict.Controllers
                 
                }).ToArray()
             };
-            var newplanet = await _planetsServices.Create(dto);
-            if (newplanet != null) 
+            var newerplanet = await _planetsServices.Create(dto);
+            if (newerplanet == null) 
             {
                 return RedirectToAction("Index");
             }

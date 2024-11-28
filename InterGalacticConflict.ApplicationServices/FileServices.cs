@@ -1,6 +1,4 @@
 ﻿
-namespace InterGalacticConflict.ApplicationServices
-{
     using IntergalacticConflict.Core.Domain;
     using IntergalacticConflict.Core.Dto;
     using IntergalacticConflict.Core.ServiceInterface;
@@ -8,9 +6,9 @@ namespace InterGalacticConflict.ApplicationServices
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Hosting;
 
-    namespace GalacticTitans.ApplicationServices.Services
+    namespace InterGalacticConflict.ApplicationServices
     {
-        public class FileServices : IFileServices
+        public class FileServices
         {
             private readonly IHostEnvironment _webHost;
             private readonly InterGalacticConflictContext _context;
@@ -72,7 +70,7 @@ namespace InterGalacticConflict.ApplicationServices
                             {
                                 ID = Guid.NewGuid(),
                                 ImageTitle = image.FileName,
-                                ShipID = domain.Id
+                                PlanetID = domain.Id
                             };
                             image.CopyTo(target);
                             files.ImageData = target.ToArray();
@@ -85,4 +83,4 @@ namespace InterGalacticConflict.ApplicationServices
 
         }
     }
-}
+
