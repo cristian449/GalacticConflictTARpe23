@@ -8,24 +8,33 @@ using System.Threading.Tasks;
 
 namespace IntergalacticConflict.Core.Dto
 {
+    public enum PlanetType
+    {
+        Ecumenopolis, Ice_wasteland, Terraformed, Desert, Volcanic, Jungle, Plains, Crystalized, Wasteland, Ocean, Star, Nebula, Blackhole, Nebula_Cluster, lifeless
+    }
+
+    public enum PlanetStatus
+    {
+        Occupied, Free, Destroyed, Unhinabited, Garrisoned, Pirates, Warlord
+    }
     public class PlanetDto
     {
-        public Guid Id { get; set; }
+        public Guid ID { get; set; }
         public string PlanetName { get; set; }
 
         public PlanetType PlanetType { get; set; }
 
-        public PlanetStatus? PlanetStatus { get; set; }
+        //public PlanetStatus? PlanetStatus { get; set; }
 
         public int PlanetPopulation { get; set; }
 
-        public string? Planetinfo { get; set; }
+        //public string? Planetinfo { get; set; }
         public Guid? GalaxyID { get; set; }
         public int Major_cities { get; set; }
 
-        public string? CapitalCity { get; set; }
+        public string CapitalCity { get; set; }
 
-        public int? AmountOfShipsonPlanet { get; set; }
+        public int AmountOfShipsonPlanet { get; set; }
 
        // public string? SpaceStation { get; set; }
         // Might try adding  "public int SpaceStations { get; set; } To add multiple space stations to one planet

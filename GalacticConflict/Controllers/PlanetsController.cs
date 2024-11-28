@@ -27,13 +27,13 @@ namespace InterGalacticConflict.Controllers
         public IActionResult Index() 
         {
             var allplanets = _context.Planets
-            .OrderByDescending(y => y.PlanetType)
-            .Select(x => new PlanetIndexViewModel
+                .OrderByDescending(y => y.PlanetType)
+                .Select(x => new PlanetIndexViewModel
             {
-                Id = x.Id,
+                ID = x.ID,
                 PlanetName = x.PlanetName,
                 PlanetType = x.PlanetType,
-                PlanetStatus = (IntergalacticConflict.Core.Domain.PlanetStatus)x.PlanetStatus,
+                //PlanetStatus = (IntergalacticConflict.Core.Domain.PlanetStatus)x.PlanetStatus,
                 PlanetPopulation = x.PlanetPopulation,
                 GalaxyID = (Guid)x.GalaxyID,
                 Major_cities = x.Major_cities,
@@ -49,6 +49,7 @@ namespace InterGalacticConflict.Controllers
 
             
         }
+
         [HttpGet]
         public IActionResult Create()
         {
@@ -57,7 +58,7 @@ namespace InterGalacticConflict.Controllers
 
         }
 
-        [HttpPost, ActionName("Create")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create (PlanetCreateViewModel vm)
         {
@@ -65,8 +66,8 @@ namespace InterGalacticConflict.Controllers
             var dto = new PlanetDto()
             {
                 PlanetName = vm.PlanetName,
-                PlanetType = vm.PlanetType,
-                PlanetStatus = vm.PlanetStatus,
+                PlanetType = (PlanetType)vm.PlanetType,
+                //PlanetStatus = (PlanetStatus?)vm.PlanetStatus,
                 GalaxyID = vm.GalaxyID,
                 PlanetPopulation = vm.PlanetPopulation,
                 Major_cities = vm.Major_cities,
@@ -83,12 +84,12 @@ namespace InterGalacticConflict.Controllers
                      ID = x.ImageID,
                      ImageData = x.ImageData,
                      ImageTitle = x.ImageTitle,
-                     PlanetID = x.PlanetID,
+                     PlanetID = x.PlanetID
                 
                }).ToArray()
             };
-            var newplanet = await _planetsServices.Create(dto);
-            if (newplanet == null) 
+            var addedplanet = await _planetsServices.Create(dto);
+            if (addedplanet == null) 
             {
                 return RedirectToAction("Index");
             }

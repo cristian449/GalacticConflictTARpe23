@@ -11,31 +11,31 @@ namespace IntergalacticConflict.Core.Domain
         Ecumenopolis, Ice_wasteland, Terraformed, Desert, Volcanic, Jungle, Plains, Crystalized, Wasteland, Ocean, Star, Nebula, Blackhole, Nebula_Cluster, lifeless
     }
 
-    public enum PlanetStatus
-    {
-        Occupied, Free, Destroyed, Unhinabited, Garrisoned, Pirates, Warlord
-    }
+    //public enum PlanetStatus
+    //{
+    //    Occupied, Free, Destroyed, Unhinabited, Garrisoned, Pirates, Warlord
+    //}
 
-    public enum SpaceStationType
-    {
-        Manafacturing_Factory, Economic, Civillian, Military, ShipYard, None, Goliath //Goliath is a station that has very good 
-                                                                                      //Defense however also has large upcost
-    }
+    //public enum SpaceStationType
+    //{
+    //    Manafacturing_Factory, Economic, Civillian, Military, ShipYard, None, Goliath //Goliath is a station that has very good 
+    //                                                                                  //Defense however also has large upcost
+    //}
 
-    public enum DefenseType
-    {
-        Heavy, Light, Very_light, Medium
-    }
+    //public enum DefenseType
+    //{
+    //    Heavy, Light, Very_light, Medium
+    //}
 
     public class Planet
     {
 
-            public Guid Id { get; set; }
+            public Guid ID { get; set; }
             public string PlanetName { get; set; }
 
             public PlanetType PlanetType { get; set; }
            
-            public PlanetStatus? PlanetStatus { get; set; }
+           // public PlanetStatus? PlanetStatus { get; set; }
 
             public int PlanetPopulation { get; set; } //Most likely will remain aesthetic
 
@@ -45,11 +45,11 @@ namespace IntergalacticConflict.Core.Domain
                                                //though i'll add that later, possibly, maybe if not too lazy
             public int Major_cities { get; set; } 
 
-            public string? CapitalCity {  get; set; } //Just an aesthetic choice 
+            public string CapitalCity {  get; set; } //Just an aesthetic choice 
 
-            public int? AmountOfShipsonPlanet { get; set; } //Not on, but occupying, you get the gist
+            public int AmountOfShipsonPlanet { get; set; } //Not on, but occupying, you get the gist
 
-            public string? SpaceStation { get; set; } //Aesthetic
+            //public string? SpaceStation { get; set; } //Aesthetic
 
             // Might try adding  "public int SpaceStations { get; set; } To add multiple space stations to one planet
 

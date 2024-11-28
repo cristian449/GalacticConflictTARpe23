@@ -56,8 +56,10 @@
                         {
                             ID = Guid.NewGuid(),
                             ImageTitle = image.FileName,
-                            PlanetID = domain.Id
+                            PlanetID = domain.ID
                         };
+                        
+                        
                         image.CopyTo(target);
                         files.ImageData = target.ToArray();
                         _context.FilesToDatabase.Add(files);

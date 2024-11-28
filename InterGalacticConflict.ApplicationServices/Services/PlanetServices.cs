@@ -29,34 +29,37 @@ namespace InterGalacticConflict.ApplicationServices.Services
         public async Task<Planet> DetailsAsync(Guid id)
         {
             var result = await _context.Planets
-                .FirstOrDefaultAsync(a => a.Id == id);
+                .FirstOrDefaultAsync(a => a.ID == id);
+            
             return result;
         }
 
-        public async Task<Planet> Create(PlanetDto Dto)
+        public async Task<Planet> Create(PlanetDto dto)
         {
-            Planet newplanet = new();
+            Planet newplanet = new Planet();
 
-            newplanet.Id = Guid.NewGuid();
-            newplanet.PlanetName = Dto.PlanetName;
-            newplanet.PlanetPopulation = Dto.PlanetPopulation;
-            newplanet.PlanetStatus = Dto.PlanetStatus;
-            newplanet.CapitalCity = Dto.CapitalCity;
-            newplanet.Major_cities = Dto.Major_cities;
-            newplanet.PlanetType = Dto.PlanetType;
+
+            newplanet.ID = Guid.NewGuid();
+            newplanet.PlanetName = dto.PlanetName;
+            newplanet.PlanetPopulation = dto.PlanetPopulation;
+            //newplanet.PlanetStatus = (IntergalacticConflict.Core.Domain.PlanetStatus?)dto.PlanetStatus;
+            newplanet.CapitalCity = dto.CapitalCity;
+            newplanet.Major_cities = dto.Major_cities;
+            newplanet.PlanetType = (IntergalacticConflict.Core.Domain.PlanetType)dto.PlanetType;
 
 
             newplanet.CreatedAt = DateTime.Now;
             newplanet.ModifiedAt = DateTime.Now;
 
             //files
-            if(Dto.Files !=  null)
+            if(dto.Files !=  null)
             {
-                _fileServices.UploadFilesToDatabase(Dto, newplanet);
+                _fileServices.UploadFilesToDatabase(dto, newplanet);
             }
 
-           
-            return newplanet;
+           await _context.Planets.AddAsync(newplanet);
+           await _context.SaveChangesAsync();
+           return newplanet;
 
 
 

@@ -3,7 +3,7 @@
 @{
     int rowNumber = 1;
 }
-<div><a asp-action="create" asp-controller="Planets" class="btn btn-primary">CONQUER NEW PLANET TO ADD TO THE EMPIRE</a></div>
+<div><a asp-action="create" asp-controller="Planets" type="submit" class="btn btn-primary">CONQUER NEW PLANET TO ADD TO THE EMPIRE</a></div>
 
 <div class="h1">Planet Count</div>
 <form method="post">
@@ -11,7 +11,7 @@
         <thead>
             <tr>
                 
-                <th scope="col">Id</th>
+                <th scope="col">ID</th>
                 <th scope="col">Planet Name</th>
                 <th scope="col">Planet Type</th>
                 <th scope="col">Amount of Cities</th>
@@ -30,11 +30,10 @@
                 <tr>
                     @*Later, once images have been implemented, agg images here as well*@
                     <td>@rowNumber</td>
-                    <td>@planet.Id</td>
+                    <td>@planet.ID</td>
                     <td>@planet.PlanetName</td>
                     <td>@planet.PlanetType</td>
                     <td>@planet.PlanetPopulation</td>
-                    <td>@planet.PlanetStatus</td>
                     <td>@planet.Major_cities</td>
                     <td>@planet.CapitalCity</td>
                     <td>@planet.GalaxyID</td>
