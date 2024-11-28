@@ -251,6 +251,18 @@ namespace InterGalacticConflict.Controllers
             return RedirectToAction("Index", vm);
         }
 
+
+        [HttpPost]
+        public async Task<IActionResult> RemoveImage(Guid id)
+        {
+            var dto = new FileToDatabaseDto()
+            {
+                ID = id
+            };
+            var image = await _fileServices.RemoveImageFromDatabase(dto);
+            if (image == null) { return RedirectToAction("Index"); }
+            return RedirectToAction("Index");
+        }
     }
 
 
