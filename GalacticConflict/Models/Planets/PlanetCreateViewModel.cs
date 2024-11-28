@@ -1,14 +1,10 @@
 ﻿using IntergalacticConflict.Core.Domain;
-using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using IntergalacticConflict.Core.Dto;
+using InterGalacticConflict.Models.Ships;
 
-namespace IntergalacticConflict.Core.Dto
+namespace InterGalacticConflict.Models.Planets
 {
-    public class PlanetDto
+    public class PlanetCreateViewModel
     {
         public Guid Id { get; set; }
         public string PlanetName { get; set; }
@@ -19,7 +15,7 @@ namespace IntergalacticConflict.Core.Dto
 
         public int PlanetPopulation { get; set; }
 
-        public Guid? GalaxyID { get; set; }
+        public Guid GalaxyID { get; set; }
         public int Major_cities { get; set; }
 
         public string CapitalCity { get; set; }
@@ -35,7 +31,7 @@ namespace IntergalacticConflict.Core.Dto
         //IGMAE YAY
         public List<IFormFile> Files { get; set; }
 
-        public IEnumerable<FileToDatabaseDto> Image { get; set; } = new List<FileToDatabaseDto>();
+        public List<ShipImageViewModel> Image { get; set; } = new List<ShipImageViewModel>();
 
         //Database only!
         public DateTime CreatedAt { get; set; }

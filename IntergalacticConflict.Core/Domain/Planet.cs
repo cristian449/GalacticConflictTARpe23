@@ -41,13 +41,13 @@ namespace IntergalacticConflict.Core.Domain
 
             public string Planetinfo { get; set; } //Information about planet, buffs, history and such
 
-            public Guid GalaxyID { get; set; } //What galaxy what planet is in, might have to add a 4th part called galaxies,
+            public Guid? GalaxyID { get; set; } //What galaxy what planet is in, might have to add a 4th part called galaxies,
                                                //though i'll add that later, possibly, maybe if not too lazy
             public int Major_cities { get; set; } 
 
             public string CapitalCity {  get; set; } //Just an aesthetic choice 
 
-            public int AmountOfShipsonPlanet { get; set; } //Not on, but occupying, you get the gist
+            public int? AmountOfShipsonPlanet { get; set; } //Not on, but occupying, you get the gist
 
             public string SpaceStation { get; set; } //Aesthetic
 
