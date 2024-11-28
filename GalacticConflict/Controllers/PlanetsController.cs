@@ -6,6 +6,7 @@ using InterGalacticConflict.Models.Planets;
 using InterGalacticConflict.Models.Ships;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace InterGalacticConflict.Controllers
 {
@@ -137,5 +138,54 @@ namespace InterGalacticConflict.Controllers
             return View(vm);
 
         }
+
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+
+            if (id == null) { return NotFound(); }
+
+            var planet = await _planetsServices.DetailsAsync(id);
+
+            if (planet == null) { return NotFound(); };
+
+            var images = await _context.FilesToDatabase
+                .Where(x => x.PlanetID == id)
+                .Select(y => new PlanetImageViewModel
+                {
+                    PlanetID = y.ID,
+                    ImageID = y.ID,
+                    ImageData = y.ImageData,
+                    ImageTitle = y.ImageTitle,
+                    Image = string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(y.ImageData))
+                }).ToArrayAsync();
+            var vm = new PlanetDeleteViewModel();
+
+            vm.ID = planet.ID;
+            vm.PlanetName = planet.PlanetName;
+            vm.PlanetType = planet.PlanetType;
+            vm.PlanetPopulation = planet.PlanetPopulation;
+            vm.CapitalCity = planet.CapitalCity;
+            vm.Major_cities = planet.Major_cities;
+            vm.SpaceStation = planet.SpaceStation;
+            vm.Image.AddRange(images);
+
+
+
+            return View(vm);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteConfirmation(Guid id)
+        {
+            var planetToDelete = await _planetsServices.Delete(id);
+            if (planetToDelete == null) { return RedirectToAction("Index"); }
+            return RedirectToAction("Index");
+        }
+
     }
+
+
+
 }

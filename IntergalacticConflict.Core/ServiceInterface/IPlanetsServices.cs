@@ -13,5 +13,7 @@ namespace IntergalacticConflict.Core.ServiceInterface
         Task<Planet> DetailsAsync(Guid id);
 
         Task<Planet> Create(PlanetDto dto);
+
+        Task<Planet> Delete(Guid id);
     }
 }

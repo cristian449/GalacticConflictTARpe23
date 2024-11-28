@@ -66,5 +66,14 @@ namespace InterGalacticConflict.ApplicationServices.Services
 
 
         }
+
+        public async Task<Planet> Delete(Guid id)
+        {
+            var result = await _context.Planets
+                .FirstOrDefaultAsync(x => x.ID == id);
+            _context.Planets.Remove(result);
+            await _context.SaveChangesAsync();
+            return result;
+        }
     }
 }

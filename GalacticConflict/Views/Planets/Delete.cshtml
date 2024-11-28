@@ -1,0 +1,50 @@
+﻿@model InterGalacticConflict.Models.Planets.PlanetDeleteViewModel
+
+
+<h1> @Html.DisplayFor(model => model.PlanetName) </h1>
+
+<div>
+    <h4> Planet Status: </h4>
+    <hr />
+    <dl class="row">
+        <div class="form-group row">
+            <label asp-for="ID" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.ID)
+        </div>
+        <div class="form-group row">
+            <label asp-for="PlanetName" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.PlanetName)
+        </div>
+        <div id="imagediv">
+            @foreach (var image in Model.Image)
+            {
+                <partial name="_Images" model="image" />
+            }
+        </div>
+        <div class="form-group row">
+            <label asp-for="PlanetType" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.PlanetType)
+        </div>
+        <div class="form-group row">
+            <label asp-for="PlanetPopulation" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.PlanetPopulation)
+        </div>
+        <div class="form-group row">
+            <label asp-for="CapitalCity" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.CapitalCity)
+        </div>
+        <div class="form-group row">
+            <label asp-for="Major_cities" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.Major_cities)
+        </div>
+        <div class="form-group row">
+            <label asp-for="SpaceStation" class="col-sm-2 col-form-label"></label>
+            @Html.DisplayFor(model => model.SpaceStation)
+        </div>
+    </dl>
+    <form asp-action="DeleteConfirmation">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        <a asp-action="Index" asp-controller="Ships" class="btn btn-secondary">Index</a>
+    </form>
+</div>
