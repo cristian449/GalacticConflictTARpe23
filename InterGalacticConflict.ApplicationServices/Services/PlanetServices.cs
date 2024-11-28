@@ -75,5 +75,39 @@ namespace InterGalacticConflict.ApplicationServices.Services
             await _context.SaveChangesAsync();
             return result;
         }
+
+        public async Task<Planet> Modify(PlanetDto dto)
+        {
+            // set by service
+            Planet planet = new Planet();
+
+            planet.ID = dto.ID;
+            planet.PlanetName = dto.PlanetName;
+            planet.PlanetPopulation = dto.PlanetPopulation;
+            planet.PlanetType = (IntergalacticConflict.Core.Domain.PlanetType)dto.PlanetType;
+            planet.CapitalCity = dto.CapitalCity;
+            planet.Major_cities = dto.Major_cities;
+            planet.SpaceStationType = dto.SpaceStationType;
+            planet.SpaceStation = dto.SpaceStation;
+            
+
+
+            //Set for Database
+
+            planet.CreatedAt = DateTime.Now;
+            planet.ModifiedAt = DateTime.Now;
+
+            //files
+            if (dto.Files != null)
+            {
+                _fileServices.UploadFilesToDatabase(dto, planet);
+            }
+
+            _context.Planets.Update(planet);
+            await _context.SaveChangesAsync();
+
+            return planet;
+
+        }
     }
 }

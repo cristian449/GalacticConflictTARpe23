@@ -184,6 +184,73 @@ namespace InterGalacticConflict.Controllers
             return RedirectToAction("Index");
         }
 
+
+        [HttpGet]
+        public async Task<IActionResult> Modify(Guid Id)
+        {
+            if (Id == null) { return NotFound(); }
+
+            var planet = await _planetsServices.DetailsAsync(Id);
+            if (planet == null) { return NotFound(); }
+
+            var images = await _context.FilesToDatabase
+                .Where(x => x.PlanetID == Id)
+                 .Select(y => new PlanetImageViewModel
+                 {
+                     PlanetID = y.ID,
+                     ImageID = y.ID,
+                     ImageData = y.ImageData,
+                     ImageTitle = y.ImageTitle,
+                     Image = string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(y.ImageData))
+                 }).ToArrayAsync();
+
+            var vm = new PlanetCreateViewModel();
+
+            vm.ID = planet.ID;
+            vm.PlanetName = planet.PlanetName;
+            vm.PlanetType = planet.PlanetType;
+            vm.PlanetPopulation = planet.PlanetPopulation;
+            vm.CapitalCity = planet.CapitalCity;
+            vm.Major_cities = planet.Major_cities;
+            vm.SpaceStation = planet.SpaceStation;
+            vm.SpaceStationType = planet.SpaceStationType;
+            vm.Image.AddRange(images);
+
+            return View("Modify", vm);
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Modify(PlanetCreateViewModel vm)
+        {
+            var dto = new PlanetDto()
+            {
+                ID = (Guid)vm.ID,
+                PlanetName = vm.PlanetName,
+                PlanetType = (PlanetType)vm.PlanetType,
+                GalaxyID = vm.GalaxyID,
+                PlanetPopulation = vm.PlanetPopulation,
+                SpaceStation = vm.SpaceStation,
+                SpaceStationType = vm.SpaceStationType,
+                Major_cities = vm.Major_cities,
+                CapitalCity = vm.CapitalCity,
+                CreatedAt = DateTime.Now,
+                ModifiedAt = DateTime.Now,
+                Files = vm.Files,
+                Image = vm.Image
+                .Select(x => new FileToDatabaseDto
+                {
+                    ID = x.ImageID,
+                    ImageData = x.ImageData,
+                    ImageTitle = x.ImageTitle,
+                    ShipID = x.PlanetID,
+                }).ToArray()
+            };
+            var result = await _planetsServices.Modify(dto);
+            if (result == null) { return RedirectToAction("Index"); }
+            return RedirectToAction("Index", vm);
+        }
+
     }
 
 

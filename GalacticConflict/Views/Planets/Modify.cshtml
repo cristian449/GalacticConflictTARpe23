@@ -1,0 +1,104 @@
+﻿@using IntergalacticConflict.Core.Domain
+@model InterGalacticConflict.Models.Planets.PlanetCreateViewModel
+
+<div>
+    <form method="post" asp-action="Modify" enctype="multipart/form-data">
+        <div class="form-group-row">
+            <label asp-for="PlanetName" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="PlanetName" class="form-control"></input>
+            </div>
+        </div>
+        <div class="form-group-row">
+            <label asp-for="Major_cities" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="Major_cities" class="form-control"></input>
+            </div>
+        </div>
+        <div class="form-group-row">
+            <label asp-for="CapitalCity" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <input asp-for="CapitalCity" class="form-control"></input>
+            </div>
+        </div>
+
+        <div class="form-group-row">
+            <label asp-for="PlanetType" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <select asp-items="Html.GetEnumSelectList<PlanetType>()">
+                    <option value="">Select Planet Type</option>
+                </select>
+                <span asp-validation-for="PlanetType"></span>
+                <div />
+
+
+            </div>
+            <div class="form-group-row">
+                <label asp-for="SpaceStation" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <input asp-for="SpaceStation" class="form-control"></input>
+                </div>
+            </div>
+
+
+            <div class="form-group-row">
+                <label asp-for="SpaceStationType" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <select asp-items="Html.GetEnumSelectList<SpaceStationType>()">
+                        <option value="">Select Planet Type</option>
+                    </select>
+                    <span asp-validation-for="SpaceStationType"></span>
+                    <div />
+                </div>
+
+                <div class="form-group-row">
+                    <label asp-for="PlanetPopulation" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <input asp-for="PlanetPopulation" class="form-control"></input>
+                    </div>
+                </div>
+
+        <div class="form-group-row">
+            <label asp-for="Files" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-5">
+                <div class="custom-file">
+                    <input class="form-control custom-file-input"
+                           asp-for="Files"
+                           multiple type="file" />
+                    <label class="custom-file-label">Choose Images from device -></label>
+                </div>
+            </div>
+
+        </div>
+        <div>
+            @foreach (var image in Model.Image)
+            {
+                <partial name="_Images" model="image"></partial>
+                <input asp-action="removeImage" asp-controller="planets" asp-route-id="@image.ImageID" type="submit" class="btn btn-danger" value="Delete image" />
+            }
+        </div>
+        @{
+            var breakpoint = "";
+        }
+        <input asp-action="Modify" asp-controller="Planets" type="submit"
+               class="btn btn-primary" value="Modify this planet" />
+        <a asp-action="index" class="btn btn-primary">Cancel</a>
+    </form>
+
+</div>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('.custom-file-input').on("change", function () {
+                var fileLabel = $(this).next('.custom-file-input');
+                var files = $(this)[0].files;
+                if (files.length > 1) {
+                    fileLabel.html(files.length + ' files selected');
+                }
+                else if (files.length == 1) {
+                    fileLabel.html(files[0].name);
+                }
+            });
+        });
+    </script>
+}
