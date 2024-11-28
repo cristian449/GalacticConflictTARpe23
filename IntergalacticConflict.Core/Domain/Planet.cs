@@ -16,11 +16,11 @@ namespace IntergalacticConflict.Core.Domain
     //    Occupied, Free, Destroyed, Unhinabited, Garrisoned, Pirates, Warlord
     //}
 
-    //public enum SpaceStationType
-    //{
-    //    Manafacturing_Factory, Economic, Civillian, Military, ShipYard, None, Goliath //Goliath is a station that has very good 
-    //                                                                                  //Defense however also has large upcost
-    //}
+    public enum SpaceStationType
+    {
+        Manafacturing_Factory, Economic, Civillian, Military, ShipYard, None, Goliath //Goliath is a station that has very good 
+                                                                                      //Defense however also has large upcost
+    }
 
     //public enum DefenseType
     //{
@@ -49,11 +49,11 @@ namespace IntergalacticConflict.Core.Domain
 
             public int AmountOfShipsonPlanet { get; set; } //Not on, but occupying, you get the gist
 
-            //public string? SpaceStation { get; set; } //Aesthetic
+            public string? SpaceStation { get; set; } //Aesthetic
 
             // Might try adding  "public int SpaceStations { get; set; } To add multiple space stations to one planet
 
-            //public SpaceStationType? SpaceStationType { get; set; } //For now just and aesthetic choice, might change later
+            public SpaceStationType SpaceStationType { get; set; } //For now just and aesthetic choice, might change later
 
             //public DefenseType? DefenseType { get; set; } //A Station can only have one Defense type
 

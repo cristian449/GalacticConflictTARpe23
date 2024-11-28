@@ -38,6 +38,7 @@ namespace InterGalacticConflict.Controllers
                 GalaxyID = (Guid)x.GalaxyID,
                 Major_cities = x.Major_cities,
                 CapitalCity = x.CapitalCity,
+                SpaceStation = x.SpaceStation,
                 AmountOfShipsonPlanet = (int)x.AmountOfShipsonPlanet,
                 
                 
@@ -70,6 +71,8 @@ namespace InterGalacticConflict.Controllers
                 //PlanetStatus = (PlanetStatus?)vm.PlanetStatus,
                 GalaxyID = vm.GalaxyID,
                 PlanetPopulation = vm.PlanetPopulation,
+                SpaceStation = vm.SpaceStation,
+                SpaceStationType = vm.SpaceStationType,
                 Major_cities = vm.Major_cities,
                 CapitalCity = vm.CapitalCity,
 

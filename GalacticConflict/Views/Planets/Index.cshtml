@@ -10,16 +10,14 @@
     <table class="table table-hover">
         <thead>
             <tr>
-                
+                <th scope="col">#</th>
                 <th scope="col">ID</th>
                 <th scope="col">Planet Name</th>
                 <th scope="col">Planet Type</th>
-                <th scope="col">Amount of Cities</th>
-                <th scope="col">In what Galaxy</th>
-                <th scope="col">Current Status</th>
-                <th scope="col">Population size</th>
-                <th scope="col">Capital of planet</th
-
+                <th scope="col">Population</th>
+                <th scope="col">Cities</th>
+                <th scope="col">Capital</th>
+                <th scope="col">SpaceStations</th>
             </tr>
         </thead>
         <tbody>
@@ -37,6 +35,7 @@
                     <td>@planet.Major_cities</td>
                     <td>@planet.CapitalCity</td>
                     <td>@planet.GalaxyID</td>
+                    <td>@planet.SpaceStation</td>
                 </tr>
                 rowNumber++;
             }
