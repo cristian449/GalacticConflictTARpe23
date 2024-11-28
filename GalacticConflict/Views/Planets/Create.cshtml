@@ -22,12 +22,6 @@
                 <input asp-for="CapitalCity" class="form-control"></input>
             </div>
         </div>
-        <div class="form-group-row">
-            <label asp-for="SpaceStation" class="col-sm-2 col-form-label"></label>
-            <div class="col-sm-10">
-                <input asp-for="SpaceStation" class="form-control"></input>
-            </div>
-        </div>
 
         <div class="form-group-row">
             <label asp-for="PlanetType" class="col-sm-2 col-form-label"></label>
@@ -39,15 +33,6 @@
                 <div />
         </div>
 
-        <div class="form-group-row">
-                <label asp-for="SpaceStationType" class="col-sm-2 col-form-label"></label>
-                <div class="col-sm-10">
-                    <select asp-items="Html.GetEnumSelectList<SpaceStationType>()">
-                        <option value="">Select Planet Type</option>
-                    </select>
-                    <span asp-validation-for="SpaceStationType"></span>
-                    <div />
-         </div>
 
 
 

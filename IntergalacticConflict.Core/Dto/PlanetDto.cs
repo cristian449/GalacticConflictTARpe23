@@ -27,10 +27,10 @@ namespace IntergalacticConflict.Core.Dto
 
         public int? AmountOfShipsonPlanet { get; set; }
 
-        public string? SpaceStation { get; set; }
+       // public string? SpaceStation { get; set; }
         // Might try adding  "public int SpaceStations { get; set; } To add multiple space stations to one planet
 
-        public SpaceStationType? SpaceStationType { get; set; }
+       // public SpaceStationType? SpaceStationType { get; set; }
 
 
         //IGMAE YAY

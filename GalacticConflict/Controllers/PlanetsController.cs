@@ -27,7 +27,7 @@ namespace InterGalacticConflict.Controllers
         public IActionResult Index() 
         {
             var allplanets = _context.Planets
-            .OrderByDescending(a => a.PlanetType)
+            .OrderByDescending(y => y.PlanetType)
             .Select(x => new PlanetIndexViewModel
             {
                 Id = x.Id,
@@ -39,8 +39,8 @@ namespace InterGalacticConflict.Controllers
                 Major_cities = x.Major_cities,
                 CapitalCity = x.CapitalCity,
                 AmountOfShipsonPlanet = (int)x.AmountOfShipsonPlanet,
-                SpaceStation = x.SpaceStation,
-                SpaceStationType = (IntergalacticConflict.Core.Domain.SpaceStationType)x.SpaceStationType,
+                
+                
 
             });
 
@@ -71,8 +71,6 @@ namespace InterGalacticConflict.Controllers
                 PlanetPopulation = vm.PlanetPopulation,
                 Major_cities = vm.Major_cities,
                 CapitalCity = vm.CapitalCity,
-                SpaceStation = vm.SpaceStation,
-                SpaceStationType = vm.SpaceStationType,
 
                 CreatedAt = vm.CreatedAt,
                 ModifiedAt = vm.ModifiedAt,

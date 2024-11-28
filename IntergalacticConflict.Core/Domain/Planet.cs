@@ -39,7 +39,7 @@ namespace IntergalacticConflict.Core.Domain
 
             public int PlanetPopulation { get; set; } //Most likely will remain aesthetic
 
-            public string? Planetinfo { get; set; } //Information about planet, buffs, history and such
+           //public string? Planetinfo { get; set; } //Information about planet, buffs, history and such
 
             public Guid? GalaxyID { get; set; } //What galaxy what planet is in, might have to add a 4th part called galaxies,
                                                //though i'll add that later, possibly, maybe if not too lazy
@@ -53,11 +53,11 @@ namespace IntergalacticConflict.Core.Domain
 
             // Might try adding  "public int SpaceStations { get; set; } To add multiple space stations to one planet
 
-            public SpaceStationType? SpaceStationType { get; set; } //For now just and aesthetic choice, might change later
+            //public SpaceStationType? SpaceStationType { get; set; } //For now just and aesthetic choice, might change later
 
-            public DefenseType? DefenseType { get; set; } //A Station can only have one Defense type
+            //public DefenseType? DefenseType { get; set; } //A Station can only have one Defense type
 
-            public int? DefensePower { get; set; } //Will add limit to defense power later probably
+            //public int? DefensePower { get; set; } //Will add limit to defense power later probably
 
 
             //Database only!
