@@ -31,7 +31,7 @@ namespace InterGalacticConflict.Models.Planets
         //IGMAE YAY
         public List<IFormFile> Files { get; set; }
 
-        public List<ShipImageViewModel> Image { get; set; } = new List<ShipImageViewModel>();
+        public List<PlanetImageViewModel> Image { get; set; } = new List<PlanetImageViewModel>();
 
         //Database only!
         public DateTime CreatedAt { get; set; }

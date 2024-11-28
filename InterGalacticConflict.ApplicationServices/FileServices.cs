@@ -58,6 +58,31 @@ namespace InterGalacticConflict.ApplicationServices
                 await _context.SaveChangesAsync();
                 return null;
             }
+
+
+            public void UploadFilesToDatabase(Planet dto, Planet domain)
+            {
+                if (dto.Files != null && dto.Files.Count > 0)
+                {
+                    foreach (var image in dto.Files)
+                    {
+                        using (var target = new MemoryStream())
+                        {
+                            FileToDatabase files = new FileToDatabase()
+                            {
+                                ID = Guid.NewGuid(),
+                                ImageTitle = image.FileName,
+                                ShipID = domain.Id
+                            };
+                            image.CopyTo(target);
+                            files.ImageData = target.ToArray();
+                            _context.FilesToDatabase.Add(files);
+                        }
+                    }
+                }
+            }
+
+
         }
     }
 }

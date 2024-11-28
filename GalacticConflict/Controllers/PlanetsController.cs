@@ -34,10 +34,10 @@ namespace InterGalacticConflict.Controllers
                 PlanetType = x.PlanetType,
                 PlanetStatus = x.PlanetStatus,
                 PlanetPopulation = x.PlanetPopulation,
-                GalaxyID = x.GalaxyID,
+                GalaxyID = (Guid)x.GalaxyID,
                 Major_cities = x.Major_cities,
                 CapitalCity = x.CapitalCity,
-                AmountOfShipsonPlanet = x.AmountOfShipsonPlanet,
+                AmountOfShipsonPlanet = (int)x.AmountOfShipsonPlanet,
                 SpaceStation = x.SpaceStation,
                 SpaceStationType = x.SpaceStationType,
 
@@ -71,11 +71,30 @@ namespace InterGalacticConflict.Controllers
                 Major_cities = vm.Major_cities,
                 CapitalCity = vm.CapitalCity,
                 SpaceStation = vm.SpaceStation,
-                SpaceStationType = vm.SpaceStationType
+                SpaceStationType = vm.SpaceStationType,
 
                 CreatedAt = vm.CreatedAt,
                 ModifiedAt = vm.ModifiedAt,
+
+                Files = vm.Files,
+                Image = vm.Image
+
+               .Select(x => new FileToDatabaseDto
+                {
+                     ID = x.ImageID,
+                     ImageData = x.ImageData,
+                     ImageTitle = x.ImageTitle,
+                     PlanetID = x.PlanetID,
+                
+               }).ToArray()
+            };
+            var newplanet = await _planetsServices.Create(dto);
+            if (newplanet != null) 
+            {
+                return RedirectToAction("Index");
             }
+            
+            return RedirectToAction("Index", vm);
         }
     }
 }
