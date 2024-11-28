@@ -12,13 +12,17 @@ using System.Threading.Tasks;
 namespace InterGalacticConflict.ApplicationServices.Services
 {
     public class PlanetServices : IPlanetsServices
+
     {
         private readonly InterGalacticConflictContext _context;
+        private readonly IFileServices _fileServices;
 
 
-        public PlanetServices(InterGalacticConflictContext context)
+
+        public PlanetServices(InterGalacticConflictContext context, IFileServices fileServices)
         {
             _context = context;
+            _fileServices = fileServices;
         }
 
         public async Task<Planet> DetailsAsync(Guid id)
