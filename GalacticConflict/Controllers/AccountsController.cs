@@ -114,6 +114,10 @@ namespace InterGalacticConflict.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult ResetPasswordConfirmation() { return View(); }
+
         // user register methods
         [HttpGet]
         public IActionResult Register()
@@ -126,7 +130,7 @@ namespace InterGalacticConflict.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser
+                var user = new ApplicationUser()
                 {
                     UserName = model.Email,
                     Email = model.Email,

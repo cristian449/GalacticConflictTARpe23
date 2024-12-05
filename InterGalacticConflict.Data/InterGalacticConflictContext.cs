@@ -1,9 +1,11 @@
 ﻿using IntergalacticConflict.Core.Domain;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace InterGalacticConflict.Data
 {
-    public class InterGalacticConflictContext : DbContext
+    public class InterGalacticConflictContext : IdentityDbContext<ApplicationUser>
     {
         public InterGalacticConflictContext(DbContextOptions<InterGalacticConflictContext> options) : base(options) {}
 
@@ -13,5 +15,6 @@ namespace InterGalacticConflict.Data
 
         public DbSet<FileToDatabase> FilesToDatabase { get; set; }
 
+        public DbSet<IdentityRole> IdentityRoles { get; set; }
     }
 }

@@ -4,14 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IntergalacticConflict.Core.Dto
+namespace IntergalacticConflict.Core.Dto.AccountsDto
 {
-    public class ApplicationUserDto
+    public class LoginDto
     {
-        public string City { get; set; }
-
-        public string UserName { get; set; }
-
         public string Email { get; set; }
     }
 }

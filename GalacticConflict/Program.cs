@@ -3,6 +3,8 @@ using InterGalacticConflict.Data;
 using Microsoft.EntityFrameworkCore;
 using InterGalacticConflict.ApplicationServices.Services;
 using InterGalacticConflict.ApplicationServices.GalacticTitans.ApplicationServices.Services;
+using IntergalacticConflict.Core.Domain;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
     
@@ -11,8 +13,30 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IShipServices, ShipServices>();
 builder.Services.AddScoped<IFileServices, FileServices>();
+builder.Services.AddScoped<IAccountServices, AccountsServices>();
 builder.Services.AddDbContext<InterGalacticConflictContext>(                                                                                               
-    options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))); 
+    options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+{
+    options.SignIn.RequireConfirmedAccount = true;
+    options.Password.RequiredLength = 3;
+    options.Tokens.EmailConfirmationTokenProvider = "CustomEmailConfirmation";
+    options.Lockout.MaxFailedAccessAttempts = 3;
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+})
+    .AddEntityFrameworkStores<InterGalacticConflictContext>()
+    .AddDefaultTokenProviders()
+    .AddTokenProvider<DataProtectorTokenProvider<ApplicationUser>>("CustomEmailConfirmation")
+    .AddDefaultUI();
+//all tokenss
+builder.Services.Configure<DataProtectionTokenProviderOptions>(
+    options => options.TokenLifespan = TimeSpan.FromHours(5)
+    );
+//email tokens confirmation
+builder.Services.Configure<CustomEmailConfirmationTokenProviderOptions>(
+    options => options.TokenLifespan = TimeSpan.FromDays(3)
+    );
 
 var app = builder.Build();
 
