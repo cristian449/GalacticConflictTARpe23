@@ -8,6 +8,8 @@ namespace InterGalacticConflict.Models.Accounts
         [DataType(DataType.Password)]
         [Display(Name = "Type new password here: ")]
         public string NewPassword { get; set; }
+       
+        
         [DataType(DataType.Password)]
         [Display(Name = "Type it again to confirm: ")]
         [Compare("NewPassword", ErrorMessage = "The new password and its confirmation do not match. Please retry.")]
