@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IntergalacticConflict.Core.ServiceInterface
 {
-    internal class IAccountServices
+    public interface IAccountServices
     {
     }
 }

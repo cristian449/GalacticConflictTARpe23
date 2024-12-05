@@ -9,5 +9,9 @@ namespace IntergalacticConflict.Core.Domain
     public class ApplicationUser
     {
         public string City { get; set; }
+
+        public string UserName { get; set; }
+
+        public string Email { get; set; }
     }
 }
