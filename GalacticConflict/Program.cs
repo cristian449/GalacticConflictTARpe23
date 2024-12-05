@@ -5,6 +5,7 @@ using InterGalacticConflict.ApplicationServices.Services;
 using InterGalacticConflict.ApplicationServices.GalacticTitans.ApplicationServices.Services;
 using IntergalacticConflict.Core.Domain;
 using Microsoft.AspNetCore.Identity;
+using InterGalacticConflict.Security;
 
 var builder = WebApplication.CreateBuilder(args);
     
