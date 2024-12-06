@@ -31,6 +31,7 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
     .AddDefaultTokenProviders()
     .AddTokenProvider<DataProtectorTokenProvider<ApplicationUser>>("CustomEmailConfirmation")
     .AddDefaultUI();
+
 //all tokenss
 builder.Services.Configure<DataProtectionTokenProviderOptions>(
     options => options.TokenLifespan = TimeSpan.FromHours(5)
