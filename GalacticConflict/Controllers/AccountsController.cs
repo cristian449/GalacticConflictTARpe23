@@ -1,4 +1,6 @@
 ﻿using IntergalacticConflict.Core.Domain;
+using IntergalacticConflict.Core.Dto;
+using IntergalacticConflict.Core.ServiceInterface;
 using InterGalacticConflict.Data;
 using InterGalacticConflict.Models.Accounts;
 using Microsoft.AspNetCore.Authorization;
@@ -12,17 +14,20 @@ namespace InterGalacticConflict.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly InterGalacticConflictContext _context;
+        private readonly IEmailsServices _emailsServices;
 
         public AccountsController
             (
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
-            InterGalacticConflictContext context
+            InterGalacticConflictContext context,
+            IEmailsServices emailsServices
             )
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _context = context;
+            _emailsServices = emailsServices;
         }
         [HttpGet]
         public async Task<IActionResult> AddPassword()
@@ -200,6 +205,14 @@ namespace InterGalacticConflict.Controllers
                     var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
 
                     var confirmationLink = Url.Action("ConfirmEmail", "Accounts", new { userId = user.Id, token = token }, Request.Scheme);
+
+                    EmailTokenDto newsignup = new();
+                    newsignup.Token = token;
+                    newsignup.Body = $"Thaak for sign up: {confirmationLink}";
+                    newsignup.Subject = "InterGalacticConflict Register";
+                    newsignup.To = user.Email;
+
+                    _emailsServices.SendEmailToken(newsignup, token);
                     if (_signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
                     {
                         return RedirectToAction("ListUsers", "Administrations");

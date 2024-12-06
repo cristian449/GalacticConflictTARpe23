@@ -15,14 +15,18 @@ namespace InterGalacticConflict.ApplicationServices.Services
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly IEmailsServices _emailServices;
         public AccountsServices
             (
                 UserManager<ApplicationUser> userManager,
-                SignInManager<ApplicationUser> signInManager
+                SignInManager<ApplicationUser> signInManager,
+                IEmailsServices emailServices
+
             )
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _emailServices = emailServices;
         }
 
         public async Task<ApplicationUser> Register(ApplicationUserDto dto)
@@ -37,6 +41,7 @@ namespace InterGalacticConflict.ApplicationServices.Services
             if (result.Succeeded)
             {
                 var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                _emailServices.SendEmailToken(new EmailTokenDto(), token);
             }
             return user;
         }
