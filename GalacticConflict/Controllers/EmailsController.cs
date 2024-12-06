@@ -1,4 +1,5 @@
 ﻿using IntergalacticConflict.Core.Dto;
+using IntergalacticConflict.Core.ServiceInterface;
 using InterGalacticConflict.Models.Email;
 using Microsoft.AspNetCore.Mvc;
 
