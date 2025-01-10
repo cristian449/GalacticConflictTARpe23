@@ -221,7 +221,9 @@ namespace InterGalacticConflict.Controllers
                         return RedirectToAction("ListUsers", "Administrations");
                     }
 
-                    return View("~/Views/Profiles/NewProfile.cshtml");
+                    //return View("~/Views/Profiles/NewProfile.cshtml");
+
+                    return RedirectToAction("Index", "Home");
 
                     // var newprofileforthisuser = 
                 }
