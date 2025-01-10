@@ -16,6 +16,7 @@ builder.Services.AddScoped<IShipServices, ShipServices>();
 builder.Services.AddScoped<IFileServices, FileServices>();
 builder.Services.AddScoped<IEmailsServices, EmailServices>();
 builder.Services.AddScoped<IAccountServices, AccountsServices>();
+builder.Services.AddScoped<IPlayersProfileServices, PlayerProfilesServices>();
 builder.Services.AddDbContext<InterGalacticConflictContext>(                                                                                               
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 

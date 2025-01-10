@@ -15,19 +15,22 @@ namespace InterGalacticConflict.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly InterGalacticConflictContext _context;
         private readonly IEmailsServices _emailsServices;
+        private readonly IPlayersProfileServices _playerProfileServices;
 
         public AccountsController
             (
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             InterGalacticConflictContext context,
-            IEmailsServices emailsServices
+            IEmailsServices emailsServices,
+            IPlayersProfileServices playerProfileServices
             )
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _context = context;
             _emailsServices = emailsServices;
+            _playerProfileServices = playerProfileServices;
         }
         [HttpGet]
         public async Task<IActionResult> AddPassword()
@@ -218,15 +221,11 @@ namespace InterGalacticConflict.Controllers
                         return RedirectToAction("ListUsers", "Administrations");
                     }
 
-                    ViewBag.ErrorTitle = "You have successfully registered";
-                    ViewBag.ErrorMessage = "Before you can log in, please confirm email from the link" +
-                        "\nwe have emailed to your email address.";
-                    return View("Error");
+                    return View("~/Views/Profiles/NewProfile.cshtml");
+
+                    // var newprofileforthisuser = 
                 }
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError("", error.Description);
-                }
+                
             }
             return View();
         }
