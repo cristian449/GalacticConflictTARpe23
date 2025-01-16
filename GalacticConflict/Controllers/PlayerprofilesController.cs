@@ -29,18 +29,22 @@ namespace InterGalacticConflict.Controllers
 
         [HttpPost]
         [AllowAnonymous]
+        //Maybe add ResponseCache to this method
+
         //maybe change NewPlayerProfile as one is a post the other is a get
-        public async Task<IActionResult> NewPlayerProfile(PlayerProfileDto dto)
+        public async Task<IActionResult> NewProfile(PlayerProfileDto dto)
         {
-            if (dto.ApplicationUserID == null)
+            string userid = TempData["NewUserID"].ToString();
+            //if (ViewData["NewUserID"] == null)
+            if (userid == null)
             {
                 return View (Index);
             }
             var newprofile = new PlayerProfile()
             {
                 ID = dto.ID,
-                ApplicationUserID = dto.ApplicationUserID,
-                ScreenName = "",
+                ApplicationUserID = TempData["NewUserID"].ToString(),
+                ScreenName = dto.ScreenName,
                 Credits = 100,
                 BasicResource = 0, //Change later to other resource names and currency names
                 Victories = 0,
@@ -51,7 +55,8 @@ namespace InterGalacticConflict.Controllers
                 ProfileModifiedAt = DateTime.UtcNow,
             };
             var result = await _context.PlayerProfiles.AddAsync(newprofile);
-            if (result != null)
+            await _context.SaveChangesAsync();
+            if (result == null)
             {
                 return View ("Index");
             }

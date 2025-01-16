@@ -203,6 +203,7 @@ namespace InterGalacticConflict.Controllers
                     City = model.City,
                 };
                 var result = await _userManager.CreateAsync(user, model.Password);
+                TempData["User"] = user.Id;
                 if (result.Succeeded)
                 {
                     var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
