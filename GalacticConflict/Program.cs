@@ -30,8 +30,8 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 })
     .AddEntityFrameworkStores<InterGalacticConflictContext>()
     .AddDefaultTokenProviders()
-    .AddTokenProvider<DataProtectorTokenProvider<ApplicationUser>>("CustomEmailConfirmation")
-    .AddDefaultUI();
+    .AddTokenProvider<DataProtectorTokenProvider<ApplicationUser>>("CustomEmailConfirmation");
+    //.AddDefaultUI();
 
 //all tokenss
 builder.Services.Configure<DataProtectionTokenProviderOptions>(
