@@ -17,6 +17,7 @@ builder.Services.AddScoped<IPlanetsServices, PlanetServices>();
 builder.Services.AddScoped<IFileServices, FileServices>();
 builder.Services.AddScoped<IEmailsServices, EmailServices>();
 builder.Services.AddScoped<IAccountServices, AccountsServices>();
+builder.Services.AddScoped<IPlayersProfileServices, PlayerProfilesServices>();
 builder.Services.AddDbContext<InterGalacticConflictContext>(                                                                                               
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -30,8 +31,9 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 })
     .AddEntityFrameworkStores<InterGalacticConflictContext>()
     .AddDefaultTokenProviders()
-    .AddTokenProvider<DataProtectorTokenProvider<ApplicationUser>>("CustomEmailConfirmation")
-    .AddDefaultUI();
+    .AddTokenProvider<DataProtectorTokenProvider<ApplicationUser>>("CustomEmailConfirmation");
+    //.AddDefaultUI();
+
 //all tokenss
 builder.Services.Configure<DataProtectionTokenProviderOptions>(
     options => options.TokenLifespan = TimeSpan.FromHours(5)

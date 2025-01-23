@@ -11,5 +11,7 @@ namespace IntergalacticConflict.Core.Domain
     {
         public string City { get; set; }
 
+        public Guid PlayerProfileID { get; set; }
+
     }
 }
