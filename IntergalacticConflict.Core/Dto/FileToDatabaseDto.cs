@@ -11,5 +11,7 @@ namespace IntergalacticConflict.Core.Dto
         public string ImageTitle { get; set; }
         public byte[] ImageData { get; set; }
         public Guid? ShipID { get; set; }
+
+        public Guid? PlanetID { get; set; }
     }
 }

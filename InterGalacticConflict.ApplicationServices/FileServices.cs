@@ -1,6 +1,4 @@
 ﻿
-namespace InterGalacticConflict.ApplicationServices
-{
     using IntergalacticConflict.Core.Domain;
     using IntergalacticConflict.Core.Dto;
     using IntergalacticConflict.Core.ServiceInterface;
@@ -8,10 +6,10 @@ namespace InterGalacticConflict.ApplicationServices
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Hosting;
 
-    namespace GalacticTitans.ApplicationServices.Services
+    namespace InterGalacticConflict.ApplicationServices.FileServices
     {
-        public class FileServices : IFileServices
-        {
+    public class FileServices : IFileServices
+    {
             private readonly IHostEnvironment _webHost;
             private readonly InterGalacticConflictContext _context;
             public FileServices
@@ -45,6 +43,31 @@ namespace InterGalacticConflict.ApplicationServices
                 }
             }
 
+
+            public void UploadFilesToDatabase(PlanetDto dto, Planet domain)
+            {
+            if (dto.Files != null && dto.Files.Count > 0)
+            {
+                foreach (var image in dto.Files)
+                {
+                    using (var target = new MemoryStream())
+                    {
+                        FileToDatabase files = new FileToDatabase()
+                        {
+                            ID = Guid.NewGuid(),
+                            ImageTitle = image.FileName,
+                            PlanetID = domain.ID
+                        };
+                        
+                        
+                        image.CopyTo(target);
+                        files.ImageData = target.ToArray();
+                        _context.FilesToDatabase.Add(files);
+                    }
+                }
+            }
+        }
+
             public async Task<FileToDatabase> RemoveImageFromDatabase(FileToDatabaseDto dto)
             {
                 var imageID = await _context.FilesToDatabase
@@ -58,6 +81,8 @@ namespace InterGalacticConflict.ApplicationServices
                 await _context.SaveChangesAsync();
                 return null;
             }
-        }
+
+
     }
 }
+

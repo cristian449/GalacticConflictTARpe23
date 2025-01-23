@@ -4,6 +4,7 @@ using InterGalacticConflict.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InterGalacticConflict.Data.Migrations
 {
     [DbContext(typeof(InterGalacticConflictContext))]
-    partial class InterGalacticConflictContextModelSnapshot : ModelSnapshot
+    [Migration("20241128113516_newplanetmig")]
+    partial class newplanetmig
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,19 +52,24 @@ namespace InterGalacticConflict.Data.Migrations
 
             modelBuilder.Entity("IntergalacticConflict.Core.Domain.Planet", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("AmountOfShipsonPlanet")
+                    b.Property<int?>("AmountOfShipsonPlanet")
                         .HasColumnType("int");
 
                     b.Property<string>("CapitalCity")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<int?>("DefensePower")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DefenseType")
+                        .HasColumnType("int");
 
                     b.Property<Guid?>("GalaxyID")
                         .HasColumnType("uniqueidentifier");
@@ -79,16 +87,22 @@ namespace InterGalacticConflict.Data.Migrations
                     b.Property<int>("PlanetPopulation")
                         .HasColumnType("int");
 
+                    b.Property<int?>("PlanetStatus")
+                        .HasColumnType("int");
+
                     b.Property<int>("PlanetType")
                         .HasColumnType("int");
+
+                    b.Property<string>("Planetinfo")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SpaceStation")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("SpaceStationType")
+                    b.Property<int?>("SpaceStationType")
                         .HasColumnType("int");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("Planets");
                 });
