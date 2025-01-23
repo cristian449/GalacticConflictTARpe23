@@ -49,6 +49,7 @@ namespace InterGalacticConflict.ApplicationServices.Services
             {
                 var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                 _emailServices.SendEmailToken(new EmailTokenDto(), token);
+
             }
             await _playerprofilesServices.Create((string)user.Id);
             return user;

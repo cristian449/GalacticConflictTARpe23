@@ -203,7 +203,7 @@ namespace InterGalacticConflict.Controllers
                     City = model.City,
                 };
                 var result = await _userManager.CreateAsync(user, model.Password);
-                TempData["User"] = user.Id;
+                TempData["NewUserID"] = user.Id;
                 if (result.Succeeded)
                 {
                     var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -224,7 +224,7 @@ namespace InterGalacticConflict.Controllers
 
                     //return View("~/Views/Profiles/NewProfile.cshtml");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("NewProfile", "PlayerProfiles");
 
                     // var newprofileforthisuser = 
                 }

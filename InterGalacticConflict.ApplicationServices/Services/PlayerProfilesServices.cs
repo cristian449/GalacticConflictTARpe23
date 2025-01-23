@@ -36,10 +36,11 @@ namespace InterGalacticConflict.ApplicationServices.Services
                 CurrentStatus = IntergalacticConflict.Core.Domain.ProfileStatus.Active,
                 ProfileType = false,
                 ProfileStatusLastChangedAt = DateTime.UtcNow,
+                ProfileAttributedToAnAccountUserAt = DateTime.UtcNow,
                 ProfileCreatedAt = DateTime.UtcNow,
                 ProfileModifiedAt = DateTime.UtcNow,
             };
-            return null;
+            return profile;
 
             //var resultforprofile = await _playerprofilesServices.Create(profile);
         }

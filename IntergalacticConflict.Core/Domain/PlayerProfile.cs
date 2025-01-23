@@ -10,7 +10,7 @@ namespace IntergalacticConflict.Core.Domain
     {
         Active, Abandoned, Deactivated, Locked, Banned, ManualReviewNecessary
     }
-    public  class PlayerProfile
+    public class PlayerProfile
     {
         public Guid ID { get; set; }
         public string ApplicationUserID { get; set; } // 1-1

@@ -19,5 +19,6 @@ namespace InterGalacticConflict.Data
 
         public DbSet<PlayerProfile> PlayerProfiles { get; set; }
 
+
     }
 }
