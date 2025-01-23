@@ -108,6 +108,9 @@ namespace InterGalacticConflict.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid?>("PlanetID")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<Guid?>("ShipID")
                         .HasColumnType("uniqueidentifier");
 
@@ -118,6 +121,7 @@ namespace InterGalacticConflict.Data.Migrations
 
             modelBuilder.Entity("IntergalacticConflict.Core.Domain.Planet", b =>
                 {
+
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
@@ -186,11 +190,54 @@ namespace InterGalacticConflict.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Victories")
+
+                    b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("AmountOfShipsonPlanet")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CapitalCity")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("GalaxyID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Major_cities")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("ModifiedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PlanetName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PlanetPopulation")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PlanetType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SpaceStation")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SpaceStationType")
+
                         .HasColumnType("int");
 
                     b.HasKey("ID");
 
+
                     b.ToTable("PlayerProfiles");
+
+                    b.ToTable("Planets");
+
                 });
 
             modelBuilder.Entity("IntergalacticConflict.Core.Domain.Ship", b =>
