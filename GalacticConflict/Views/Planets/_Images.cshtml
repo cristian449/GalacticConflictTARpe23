@@ -1,0 +1,13 @@
+﻿@model InterGalacticConflict.Models.Planets.PlanetImageViewModel
+
+<div class="form-group row col-sm-4 offset-2">
+    <div>
+        @Model.ImageTitle
+        @if (!Model.Image.Any())
+        {
+            <p>"No images are found sorry :´("</p>
+        }
+    </div>
+    <img class="card-img-top" src="@Model.Image" asp-append-version="true"></>
+
+</div>

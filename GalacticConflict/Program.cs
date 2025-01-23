@@ -6,13 +6,14 @@ using InterGalacticConflict.ApplicationServices.GalacticTitans.ApplicationServic
 using IntergalacticConflict.Core.Domain;
 using Microsoft.AspNetCore.Identity;
 using InterGalacticConflict.Security;
-
+using InterGalacticConflict.ApplicationServices.FileServices;
 var builder = WebApplication.CreateBuilder(args);
     
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IShipServices, ShipServices>();
+builder.Services.AddScoped<IPlanetsServices, PlanetServices>();
 builder.Services.AddScoped<IFileServices, FileServices>();
 builder.Services.AddScoped<IEmailsServices, EmailServices>();
 builder.Services.AddScoped<IAccountServices, AccountsServices>();

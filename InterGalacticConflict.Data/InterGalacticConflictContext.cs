@@ -16,5 +16,8 @@ namespace InterGalacticConflict.Data
         public DbSet<FileToDatabase> FilesToDatabase { get; set; }
 
         public DbSet<IdentityRole> IdentityRoles { get; set; }
+
+        public DbSet<Planet> Planets { get; set; }
+
     }
 }
