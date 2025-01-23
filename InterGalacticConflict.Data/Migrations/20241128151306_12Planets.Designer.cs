@@ -4,6 +4,7 @@ using InterGalacticConflict.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InterGalacticConflict.Data.Migrations
 {
     [DbContext(typeof(InterGalacticConflictContext))]
-    partial class InterGalacticConflictContextModelSnapshot : ModelSnapshot
+    [Migration("20241128151306_12Planets")]
+    partial class _12Planets
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -53,11 +56,10 @@ namespace InterGalacticConflict.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("AmountOfShipsonPlanet")
+                    b.Property<int?>("AmountOfShipsonPlanet")
                         .HasColumnType("int");
 
                     b.Property<string>("CapitalCity")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedAt")
@@ -80,12 +82,6 @@ namespace InterGalacticConflict.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("PlanetType")
-                        .HasColumnType("int");
-
-                    b.Property<string>("SpaceStation")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("SpaceStationType")
                         .HasColumnType("int");
 
                     b.HasKey("ID");

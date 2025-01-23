@@ -13,6 +13,8 @@ namespace IntergalacticConflict.Core.ServiceInterface
         {
             void UploadFilesToDatabase(ShipDto dto, Ship domain);
 
+            void UploadFilesToDatabase(PlanetDto dto, Planet domain);
+
             Task<FileToDatabase> RemoveImageFromDatabase(FileToDatabaseDto dto);
         }
 }
